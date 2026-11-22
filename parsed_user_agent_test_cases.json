@@ -311,7 +311,7 @@
 		"is_bot": true,
 		"reported_platform": "Macintosh",
 		"engine": { "name": "webkit", "version": [9, 0] },
-		"browser": { "name": "Twitterbot", "version": [1, 0] }
+		"browser": { "name": "LinkPresentation", "version": null }
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)",

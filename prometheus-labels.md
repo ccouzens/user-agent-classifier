@@ -68,28 +68,28 @@ everything else to `"Other"` (or `"None"` when `browser` is `None`).
 The following 20 browser tokens cover the dominant browsers, mobile WebViews,
 and crawlers seen in real-world web traffic and serve as a good starting point:
 
-| Browser Token    | Description                                                           |
-| :--------------- | :-------------------------------------------------------------------- |
-| `bingbot`        | Microsoft Bing web crawler                                            |
-| `Chrome`         | Google Chrome (Desktop & Android) and Chromium-based Android WebViews |
-| `CriOS`          | Google Chrome on iOS / iPadOS                                         |
-| `Ddg`            | DuckDuckGo browser                                                    |
-| `Ecosia`         | Ecosia browser                                                        |
-| `Edg`            | Microsoft Edge (Desktop)                                              |
-| `EdgA`           | Microsoft Edge on Android                                             |
-| `EdgiOS`         | Microsoft Edge on iOS / iPadOS                                        |
-| `Facebook`       | Facebook in-app browser (`[FBAN/...]`)                                |
-| `Firefox`        | Mozilla Firefox (Desktop & Android)                                   |
-| `FxiOS`          | Mozilla Firefox on iOS / iPadOS                                       |
-| `GSA`            | Google Search App on iOS / iPadOS                                     |
-| `Instagram`      | Instagram in-app browser                                              |
-| `OPR`            | Opera browser (Desktop & Android)                                     |
-| `Safari`         | Apple Safari (macOS, iOS, iPadOS)                                     |
-| `SamsungBrowser` | Samsung Internet browser                                              |
-| `Silk`           | Amazon Silk browser (Fire tablets / devices)                          |
-| `Snapchat`       | Snapchat in-app browser                                               |
-| `Twitterbot`     | Twitter / X link preview crawler                                      |
-| `WKWebView`      | Generic iOS / macOS `WKWebView` without a specific app token          |
+| Browser Token      | Description                                                           |
+| :----------------- | :-------------------------------------------------------------------- |
+| `bingbot`          | Microsoft Bing web crawler                                            |
+| `Chrome`           | Google Chrome (Desktop & Android) and Chromium-based Android WebViews |
+| `CriOS`            | Google Chrome on iOS / iPadOS                                         |
+| `Ddg`              | DuckDuckGo browser                                                    |
+| `Ecosia`           | Ecosia browser                                                        |
+| `Edg`              | Microsoft Edge (Desktop)                                              |
+| `EdgA`             | Microsoft Edge on Android                                             |
+| `EdgiOS`           | Microsoft Edge on iOS / iPadOS                                        |
+| `Facebook`         | Facebook in-app browser (`[FBAN/...]`)                                |
+| `Firefox`          | Mozilla Firefox (Desktop & Android)                                   |
+| `FxiOS`            | Mozilla Firefox on iOS / iPadOS                                       |
+| `GSA`              | Google Search App on iOS / iPadOS                                     |
+| `Instagram`        | Instagram in-app browser                                              |
+| `LinkPresentation` | Apple iMessage / LinkPresentation link previewer                      |
+| `OPR`              | Opera browser (Desktop & Android)                                     |
+| `Safari`           | Apple Safari (macOS, iOS, iPadOS)                                     |
+| `SamsungBrowser`   | Samsung Internet browser                                              |
+| `Silk`             | Amazon Silk browser (Fire tablets / devices)                          |
+| `Snapchat`         | Snapchat in-app browser                                               |
+| `WKWebView`        | Generic iOS / macOS `WKWebView` without a specific app token          |
 
 ---
 

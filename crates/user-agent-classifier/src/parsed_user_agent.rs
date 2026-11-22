@@ -36,6 +36,9 @@ impl<'a> ParsedUserAgent<'a> {
         let mut has_apple_webkit = false;
         let mut specific_browser = None;
         let mut bot_browser = None;
+        let mut saw_facebookexternalhit = false;
+        let mut saw_facebot = false;
+        let mut saw_twitterbot = false;
 
         let mut tokens = Tokenizer::new(ua);
         while let Some(token) = tokens.next() {
@@ -117,6 +120,11 @@ impl<'a> ParsedUserAgent<'a> {
                     }
                     "Firefox" => firefox = parse_version(number),
                     _ => {
+                        if name == "facebookexternalhit" {
+                            saw_facebookexternalhit = true;
+                        } else if name == "Twitterbot" {
+                            saw_twitterbot = true;
+                        }
                         if is_bot_name(name) {
                             is_bot = true;
                         }
@@ -185,6 +193,9 @@ impl<'a> ParsedUserAgent<'a> {
                     }
                 }
                 UaToken::Other(word) => {
+                    if word == "Facebot" {
+                        saw_facebot = true;
+                    }
                     if specific_browser.is_none()
                         && word
                             .bytes()
@@ -202,39 +213,46 @@ impl<'a> ParsedUserAgent<'a> {
             }
         }
 
-        let browser = bot_browser
-            .or(specific_browser)
-            .or_else(|| {
-                firefox.map(|v| Browser {
-                    name: "Firefox",
-                    version: Some(v),
-                })
+        // Apple's iMessage / LinkPresentation sends a composite UA masquerading as
+        // Facebook and Twitter crawlers so sites serve Open Graph metadata.
+        let browser = if saw_facebookexternalhit && saw_facebot && saw_twitterbot {
+            Some(Browser {
+                name: "LinkPresentation",
+                version: None,
             })
-            .or_else(|| {
-                chrome.map(|v| Browser {
-                    name: "Chrome",
-                    version: Some(v),
-                })
+        } else {
+            bot_browser
+        }
+        .or(specific_browser)
+        .or_else(|| {
+            firefox.map(|v| Browser {
+                name: "Firefox",
+                version: Some(v),
             })
-            .or_else(|| {
-                (has_safari && version.is_some()).then_some(Browser {
-                    name: "Safari",
-                    version,
-                })
+        })
+        .or_else(|| {
+            chrome.map(|v| Browser {
+                name: "Chrome",
+                version: Some(v),
             })
-            .or_else(|| {
-                (has_apple_webkit
-                    && matches!(
-                        reported_platform,
-                        ReportedPlatform::IPhone
-                            | ReportedPlatform::IPad
-                            | ReportedPlatform::Macintosh
-                    ))
-                .then_some(Browser {
-                    name: "WKWebView",
-                    version: None,
-                })
-            });
+        })
+        .or_else(|| {
+            (has_safari && version.is_some()).then_some(Browser {
+                name: "Safari",
+                version,
+            })
+        })
+        .or_else(|| {
+            (has_apple_webkit
+                && matches!(
+                    reported_platform,
+                    ReportedPlatform::IPhone | ReportedPlatform::IPad | ReportedPlatform::Macintosh
+                ))
+            .then_some(Browser {
+                name: "WKWebView",
+                version: None,
+            })
+        });
 
         let engine = if let Some((major, _)) = chrome {
             Engine::Blink { major }

@@ -62,11 +62,11 @@ present on engine variants that carry them (`major` on `blink` and `gecko`,
 
 | Benchmark              | `user-agent-classifier` | `woothee`                       | `user-agent-parser`             | `uaparser`                         |
 | ---------------------- | ----------------------- | ------------------------------- | ------------------------------- | ---------------------------------- |
-| Full corpus (73 UAs)   | 26.01 µs (0 allocs)     | 77.94 µs (339 allocs, 10.26 KB) | 8.244 ms (206 allocs, 12.62 KB) | 24.95 ms (13,539 allocs, 915.5 KB) |
-| Desktop Chrome         | 240.8 ns (0 allocs)     | 637.1 ns (4 allocs, 128 B)      | 111.1 µs (2 allocs, 176 B)      | 275.9 µs (282 allocs, 20.22 KB)    |
-| Mobile Safari          | 338.8 ns (0 allocs)     | 902 ns (6 allocs, 164 B)        | 326.7 µs (3 allocs, 192 B)      | 333.8 µs (361 allocs, 24.62 KB)    |
-| Android WebView        | 394.3 ns (0 allocs)     | 779.3 ns (5 allocs, 160 B)      | 291.2 µs (4 allocs, 240 B)      | 370.2 µs (191 allocs, 13.19 KB)    |
-| Bot (`HeadlessChrome`) | 241.8 ns (0 allocs)     | 629.1 ns (4 allocs, 128 B)      | 205.1 µs (2 allocs, 160 B)      | 381.2 µs (260 allocs, 18.44 KB)    |
+| Full corpus (73 UAs)   | 25.26 µs (0 allocs)     | 75.06 µs (339 allocs, 10.26 KB) | 8.208 ms (206 allocs, 12.62 KB) | 25.05 ms (13,539 allocs, 915.5 KB) |
+| Desktop Chrome         | 239.6 ns (0 allocs)     | 632.3 ns (4 allocs, 128 B)      | 108.9 µs (2 allocs, 176 B)      | 258.2 µs (282 allocs, 20.22 KB)    |
+| Mobile Safari          | 388.1 ns (0 allocs)     | 981.6 ns (6 allocs, 164 B)      | 153.6 µs (3 allocs, 192 B)      | 341.1 µs (361 allocs, 24.62 KB)    |
+| Android WebView        | 428.6 ns (0 allocs)     | 771.5 ns (5 allocs, 160 B)      | 113.3 µs (4 allocs, 240 B)      | 409.5 µs (191 allocs, 13.19 KB)    |
+| Bot (`HeadlessChrome`) | 248.6 ns (0 allocs)     | 639.3 ns (4 allocs, 128 B)      | 109.5 µs (2 allocs, 160 B)      | 364.5 µs (260 allocs, 18.44 KB)    |
 
 Median latency and heap allocations reported by `divan` (`just bench`).
 
