@@ -59,3 +59,8 @@ just test
 just format
 just format-check
 ```
+
+## Contributing
+
+See
+[CONTRIBUTING.md](https://github.com/ccouzens/user-agent-classifier/blob/main/CONTRIBUTING.md).
