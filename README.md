@@ -1,9 +1,9 @@
 # user-agent-classifier
 
-Zero-allocation, regex-free Rust `User-Agent` classifier for observability —
-extracts rendering engine, platform, mobile, WebView, bot, and browser. The
-focus is on `User-Agent` strings that a contemporary website may see in its
-traffic.
+Zero-allocation, regex-free, `no_std` Rust `User-Agent` classifier for
+observability — extracts rendering engine, platform, mobile, WebView, bot, and
+browser. The focus is on `User-Agent` strings that a contemporary website may
+see in its traffic.
 
 `UserAgentClassifier::parse(ua)` scans the string in a single pass without heap
 allocations or regular expressions and borrows `browser.name` directly from the

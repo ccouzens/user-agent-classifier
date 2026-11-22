@@ -8,7 +8,7 @@ readme = "../../README.md"
 repository.workspace = true
 license.workspace = true
 keywords = ["browser", "observability", "parser", "user-agent"]
-categories = ["parser-implementations", "web-programming"]
+categories = ["no-std", "parser-implementations", "web-programming"]
 
 [dependencies]
 serde = { version = "1.0.99", default-features = false, features = ["derive"], optional = true }
