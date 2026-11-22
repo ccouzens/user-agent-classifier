@@ -16,10 +16,9 @@ use serde::{Deserialize, Serialize};
 A raw `User-Agent` header value preserved verbatim for JSON serialization and
 logging, with lazy parsing into structured fields.
 
-- <https://w3c.github.io/reporting/#report-user-agent>
-- <https://www.w3.org/TR/reporting-1/#report-user-agent>
+- <https://www.rfc-editor.org/rfc/rfc9110#section-10.1.5>
 */
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "serde", derive(Deserialize, Serialize), serde(transparent))]
 pub struct UserAgent(String);
 

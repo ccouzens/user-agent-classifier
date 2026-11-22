@@ -38,7 +38,7 @@ test-no-default-features:
     cargo test -p user-agent-classifier --no-default-features
 
 [parallel]
-check: format-check test check-biome check-toml check-clippy check-no-default-features
+check: format-check test check-biome check-toml check-clippy
 
 check-biome:
     biome check
@@ -48,6 +48,3 @@ check-toml:
 
 check-clippy:
     cargo clippy --workspace --all-targets -- -D warnings
-
-check-no-default-features:
-    cargo check -p user-agent-classifier --no-default-features

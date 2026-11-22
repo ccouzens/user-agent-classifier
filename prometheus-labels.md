@@ -16,15 +16,14 @@ directly as Prometheus labels) from **unbounded** fields (`browser.name`,
 
 ### Engine (`engine`)
 
-The rendering engine variant (ignoring its version tuple) has **4** possible
-values:
+`Engine::as_str()` (ignoring its version fields) has **4** possible values:
 
-| Variant                 | Suggested Label Value | Description                                                                                                                    |
-| :---------------------- | :-------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
-| `Engine::Blink { .. }`  | `"Blink"`             | Chromium / Blink rendering engine (`Chrome`, `Edg`, `SamsungBrowser`, `OPR`, Android WebView, etc.)                            |
-| `Engine::Gecko { .. }`  | `"Gecko"`             | Mozilla Gecko rendering engine (`Firefox` on desktop and Android)                                                              |
-| `Engine::WebKit { .. }` | `"WebKit"`            | Apple WebKit rendering engine (`Safari`, `WKWebView`, and all iOS/iPadOS browsers including `CriOS`, `FxiOS`, `EdgiOS`, `GSA`) |
-| `Engine::Other`         | `"Other"`             | Non-browser clients, bots without a rendering engine token, or unrecognised engines                                            |
+| Variant                 | `as_str()` / Label Value | Description                                                                                                                    |
+| :---------------------- | :----------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| `Engine::Blink { .. }`  | `"blink"`                | Chromium / Blink rendering engine (`Chrome`, `Edg`, `SamsungBrowser`, `OPR`, Android WebView, etc.)                            |
+| `Engine::Gecko { .. }`  | `"gecko"`                | Mozilla Gecko rendering engine (`Firefox` on desktop and Android)                                                              |
+| `Engine::WebKit { .. }` | `"webkit"`               | Apple WebKit rendering engine (`Safari`, `WKWebView`, and all iOS/iPadOS browsers including `CriOS`, `FxiOS`, `EdgiOS`, `GSA`) |
+| `Engine::Other`         | `"other"`                | Non-browser clients, bots without a rendering engine token, or unrecognised engines                                            |
 
 ### Reported Platform (`reported_platform`)
 
@@ -110,20 +109,16 @@ Instead, translate the parsed `Engine` and its `(major, minor)` version into
 
 ### Example 1: Release Date Threshold (`is_released_2026_or_later`)
 
-Map each rendering engine's `(major, minor)` version to the first version
-released in 2026 or later:
+Map each rendering engine's version to the first version released in 2026 or
+later:
 
 ```rust
 use user_agent_classifier::Engine;
 
 pub fn is_released_2026_or_later(engine: Engine) -> bool {
 	match engine {
-		Engine::Blink {
-			version: Some((major, _)),
-		} => major >= 144,
-		Engine::Gecko {
-			version: Some((major, _)),
-		} => major >= 147,
+		Engine::Blink { major } => major >= 144,
+		Engine::Gecko { major } => major >= 147,
 		Engine::WebKit {
 			version: Some((major, minor)),
 		} => (major, minor) >= (26, 3),
@@ -144,12 +139,8 @@ use user_agent_classifier::Engine;
 
 pub fn supports_details_content(engine: Engine) -> bool {
 	match engine {
-		Engine::Blink {
-			version: Some((major, _)),
-		} => major >= 131,
-		Engine::Gecko {
-			version: Some((major, _)),
-		} => major >= 143,
+		Engine::Blink { major } => major >= 131,
+		Engine::Gecko { major } => major >= 143,
 		Engine::WebKit {
 			version: Some((major, minor)),
 		} => (major, minor) >= (18, 4),

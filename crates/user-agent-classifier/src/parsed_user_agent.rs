@@ -8,7 +8,7 @@ use serde::Serialize;
 /**
 Structured classification parsed lazily from a [`crate::UserAgent`] string.
 */
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize))]
 pub struct ParsedUserAgent<'a> {
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]

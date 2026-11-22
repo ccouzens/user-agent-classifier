@@ -4,7 +4,7 @@ use serde::Serialize;
 /**
 Rendering engine and engine version parsed from a [`crate::UserAgent`].
 */
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(
     feature = "serde",
     derive(Serialize),
