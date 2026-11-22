@@ -1,3 +1,4 @@
+#[cfg(feature = "serde")]
 use serde::Serialize;
 
 /**
@@ -16,7 +17,8 @@ Browser Implementations & Documentation:
   - <https://github.com/WebKit/WebKit/blob/2ea5b33be7f0ffde238363fa949ca0eb33aa3565/Source/WebCore/platform/ios/UserAgentIOS.mm>
   - <https://github.com/WebKit/WebKit/blob/2ea5b33be7f0ffde238363fa949ca0eb33aa3565/Source/WebCore/platform/glib/UserAgentGLib.cpp>
 */
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "serde", derive(Serialize))]
 pub enum ReportedPlatform {
     /**
     Android (`Android`).
@@ -58,7 +60,7 @@ pub enum ReportedPlatform {
     - <https://github.com/WebKit/WebKit/blob/2ea5b33be7f0ffde238363fa949ca0eb33aa3565/Source/WebCore/platform/ios/UserAgentIOS.mm>
     - <https://chromium.googlesource.com/chromium/src/+/989bfb21678bad41c86612a54df922726246ecd7/components/embedder_support/user_agent_utils.cc>
     */
-    #[serde(rename = "iPad")]
+    #[cfg_attr(feature = "serde", serde(rename = "iPad"))]
     IPad,
     /**
     iPhone or iPod touch (`iPhone`).
@@ -74,7 +76,7 @@ pub enum ReportedPlatform {
     - <https://chromium.googlesource.com/chromium/src/+/989bfb21678bad41c86612a54df922726246ecd7/components/embedder_support/user_agent_utils.cc>
     - <https://github.com/mozilla-firefox/firefox/blob/5866b3015de8fc803012d8ab800d8c38df1ea5e8/netwerk/protocol/http/nsHttpHandler.cpp>
     */
-    #[serde(rename = "iPhone")]
+    #[cfg_attr(feature = "serde", serde(rename = "iPhone"))]
     IPhone,
     /**
     Linux, or Android in "Desktop site" / DeX mode (`Linux`).

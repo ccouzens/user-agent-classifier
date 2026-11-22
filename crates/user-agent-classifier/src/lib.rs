@@ -9,6 +9,7 @@ pub use engine::Engine;
 pub use parsed_user_agent::ParsedUserAgent;
 pub use reported_platform::ReportedPlatform;
 
+#[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
 
 /**
@@ -18,8 +19,8 @@ logging, with lazy parsing into structured fields.
 - <https://w3c.github.io/reporting/#report-user-agent>
 - <https://www.w3.org/TR/reporting-1/#report-user-agent>
 */
-#[derive(Debug, Clone, PartialEq, Eq, Deserialize, Serialize)]
-#[serde(transparent)]
+#[derive(Debug, Clone, PartialEq, Eq)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize), serde(transparent))]
 pub struct UserAgent(String);
 
 impl UserAgent {
@@ -61,7 +62,7 @@ impl From<&str> for UserAgent {
     }
 }
 
-#[cfg(test)]
+#[cfg(all(test, feature = "serde"))]
 mod tests {
     use super::*;
 

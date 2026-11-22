@@ -1,11 +1,6 @@
 [tools]
 biome = "latest"
-cloudflared = "latest"
 just = "latest"
-node = "latest"
-"npm:typescript" = "latest"
-pnpm = "latest"
 rust = "latest"
 rust-analyzer = "latest"
-superhtml = "0.6.2"
 tombi = "latest"

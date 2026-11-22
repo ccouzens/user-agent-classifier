@@ -1,137 +1,48 @@
-# browser-reporting-api-observability-ingester
+# user-agent-classifier
 
-Status work in progress 🚧
+Zero-allocation, regex-free Rust `User-Agent` classifier for observability —
+extracts rendering engine, platform, mobile, WebView, bot, and browser.
 
-Endpoint to ingest content-security-policy violation reports, crash reports and
-deprecation reports into observability systems by producing metric counters and
-structured JSON logged to std-out.
+`ParsedUserAgent::parse(ua)` scans the string in a single pass without heap
+allocations or regular expressions and borrows `browser.name` directly from the
+input slice.
 
-<details>
-<summary>Goal</summary>
+See [prometheus-labels.md](prometheus-labels.md) for using the classified fields
+as Prometheus metric labels (bounded values, browser allowlisting, and engine
+version bucketing).
 
-There is a ready to use docker image. However to best monitor your website, we
-encourage you to fork and customize the metric labels and JSON output with
-details relevant to monitoring your site.
+## Usage
 
-## Project structure
+```rust
+use user_agent_classifier::{Engine, ParsedUserAgent, ReportedPlatform};
 
-### Site with violations
+let ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 27_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1";
+let parsed = ParsedUserAgent::parse(ua);
 
-```
-projects/site-with-violations/
-```
-
-A collection of pages that will trigger reports in order to explore how browsers
-send reports in practice and to verify the working of this project.
-
-## Configuration
-
-For configuration specific to your website fork the project.
-
-Default configuration
-
-```
-METRICS_LABELS=ua_is_app,ua_is_mobile,document_url_origin
-LOG_LABELS=url,ip_addr,ua
-IP_ADDR_FROM=socket
-INGESTOR_URL_ORIGIN=http
+assert!(parsed.is_mobile);
+assert!(!parsed.is_webview);
+assert!(!parsed.is_bot);
+assert_eq!(parsed.reported_platform, ReportedPlatform::IPhone);
+assert_eq!(parsed.engine, Engine::WebKit { version: Some((27, 2)) });
+assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2)))));
 ```
 
-```json
-{
-	"ipAddrFrom": "socket",
-	"ingestorURLOrigin": "http",
-	"metricsPort": 8081,
-	"publicPorts": [8080],
-	"vhosts": [
-		{
-			"reportUrlPattern": { "pathname": "/report/" },
-			"logging": {
-				"tag": null,
-				"fields": {
-					"report": {
-						"type": true
-					},
-					"document": {
-						"url": {
-							"href": true
-						}
-					},
-					"sourceFile": {
-						"url": {
-							"href": true
-						}
-					},
-					"client": {
-						"ipAddr": {
-							"string": true
-						},
-						"userAgent": {
-							"string": true
-						}
-					}
-				}
-			}
-		}
-	]
-}
+### Cargo features
+
+- `serde` (enabled by default): Implements `serde::Serialize` for
+  `ParsedUserAgent`, `ReportedPlatform`, `Engine`, and `Browser`, and
+  `serde::Serialize` / `serde::Deserialize` for `UserAgent`. Disable with
+  `default-features = false` for zero runtime dependencies.
+
+## Workspace layout
+
+- `crates/user-agent-classifier`: Core Rust library crate.
+- `parsed_user_agent_test_cases.json`: Shared JSON test suite.
+
+## Development
+
+```sh
+cargo test --workspace
+cargo clippy --workspace --all-targets
+cargo fmt --check
 ```
-
-`ipAddrFrom` can be used to determine how the client IP address is derived.
-`socket` takes directly from the connection- use this if clients connect
-directly to the ingestor. `x-forwarded-for` uses the
-[x-forwarded-for header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Forwarded-For).
-`forwarded` uses the
-[forwarded header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Forwarded).
-
-`INGESTOR_URL_ORIGIN` can be used to determine the origin of the URL the client
-used to connect to the ingestor. It is useful to set this up if you're running
-the same instance of the ingestor on multiple domains and wish to tell them
-apart. `http` uses the
-[host header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Host)
-and assumes `http` as the scheme (`http` is the only scheme directly supported
-by this project). `x-forwarded` uses the headers
-[x-forwarded-proto](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Forwarded-Proto)
-and
-[x-forwarded-host](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Forwarded-Host).
-`forwarded` uses the
-[forwarded header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Forwarded).
-
-⚠️ When using `x-forwarded-for`, `x-forwarded` (`host` and `proto`) or
-`forwarded` options the first header value is used. It is your responsibility to
-configure your outermost proxy to remove any pre-existing instances of these
-headers to prevent rogue users spoofing values. Failure to do so may result in
-the incorrect value being recorded or excess cardinality in the metric counters.
-
-`METRICS_LABELS` and `LOG_LABELS` are both comma separated lists of values to
-include. They both use the same syntax, and have the same available options.
-However some values won't be sensible to use in `METRICS_LABELS` as they will
-result in exess cardinality. `METRICS_LABELS` will be the list of labels to use
-in the prometheus counters. `LOG_LABELS` will be the list of values to include
-in the structured JSON logs.
-
-### Labels values
-
-#### URL
-
-Options here are a matrix of urls, and url properties. Several different URLs
-are available
-
-1. `reporting_url`: the url of the endpoint that this service is hosted on, and
-   the client connects from.
-2. `document_url`: the url of the document that the report was generated from.
-3. `source_file_url`: the url of the file that caused the infringement.
-
-The following
-[properties of the URL object](https://developer.mozilla.org/en-US/docs/Web/API/URL)
-are supported: `hostname`, `href`, `origin`, `pathname` and `search`.
-
-For example:
-
-`reporting_url_origin`: the protocol and host and port (if non standard) used by
-the client to connect to the reporting endpoint
-
-`document_url_href`: the whole of the url of the document content that the
-browser was on when the report was generated.
-
-</details>

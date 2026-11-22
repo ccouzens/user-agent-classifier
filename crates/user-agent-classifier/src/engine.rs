@@ -1,10 +1,15 @@
+#[cfg(feature = "serde")]
 use serde::Serialize;
 
 /**
-Rendering engine and engine version parsed from a [`super::UserAgent`].
+Rendering engine and engine version parsed from a [`crate::UserAgent`].
 */
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
-#[serde(tag = "name", rename_all = "snake_case")]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[cfg_attr(
+    feature = "serde",
+    derive(Serialize),
+    serde(tag = "name", rename_all = "snake_case")
+)]
 pub enum Engine {
     Blink {
         major: u16,
@@ -12,7 +17,7 @@ pub enum Engine {
     Gecko {
         major: u16,
     },
-    #[serde(rename = "webkit")]
+    #[cfg_attr(feature = "serde", serde(rename = "webkit"))]
     WebKit {
         version: Option<(u16, u16)>,
     },

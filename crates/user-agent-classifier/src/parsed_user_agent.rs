@@ -2,18 +2,20 @@ use super::{
     Browser, Engine, ReportedPlatform,
     tokenizer::{Tokenizer, UaToken},
 };
+#[cfg(feature = "serde")]
 use serde::Serialize;
 
 /**
-Structured classification parsed lazily from a [`super::UserAgent`] string.
+Structured classification parsed lazily from a [`crate::UserAgent`] string.
 */
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[cfg_attr(feature = "serde", derive(Serialize))]
 pub struct ParsedUserAgent<'a> {
-    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
     pub is_mobile: bool,
-    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
     pub is_webview: bool,
-    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
     pub is_bot: bool,
     pub reported_platform: ReportedPlatform,
     pub engine: Engine,
@@ -318,27 +320,28 @@ fn parse_leading_u16(s: &str) -> Option<u16> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::application_reports_json::UserAgent;
-    use assert_json_diff::assert_json_eq;
-    use serde::Deserialize;
 
-    #[derive(Deserialize)]
+    #[cfg(feature = "serde")]
+    #[derive(serde::Deserialize)]
     struct TestCase {
         user_agent: String,
         #[serde(flatten)]
         expected: serde_json::Value,
     }
 
+    #[cfg(feature = "serde")]
     #[test]
     fn test_parse_user_agent_cases() {
         let cases: Vec<TestCase> =
-            serde_json::from_str(include_str!("parsed_user_agent_test_cases.json")).unwrap();
+            serde_json::from_str(include_str!("../../../parsed_user_agent_test_cases.json"))
+                .unwrap();
         assert!(!cases.is_empty());
 
         for case in cases {
             let actual =
-                serde_json::to_value(UserAgent::from(case.user_agent.as_str()).parse()).unwrap();
-            assert_json_eq!(actual, case.expected);
+                serde_json::to_value(crate::UserAgent::from(case.user_agent.as_str()).parse())
+                    .unwrap();
+            assert_json_diff::assert_json_eq!(actual, case.expected);
         }
     }
 
