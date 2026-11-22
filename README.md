@@ -58,17 +58,17 @@ present on engine variants that carry them (`major` on `blink` and `gecko`,
 
 `crates/benchmarks` compares `user-agent-classifier` against `woothee`,
 `user-agent-parser`, and `uaparser` over the 73 `User-Agent` strings in
-`parsed_user_agent_test_cases.json` and representative single cases:
+`parsed_user_agent_test_cases.json`:
 
-| Benchmark              | `user-agent-classifier` | `woothee`                       | `user-agent-parser`             | `uaparser`                         |
-| ---------------------- | ----------------------- | ------------------------------- | ------------------------------- | ---------------------------------- |
-| Full corpus (73 UAs)   | 25.26 µs (0 allocs)     | 75.06 µs (339 allocs, 10.26 KB) | 8.208 ms (206 allocs, 12.62 KB) | 25.05 ms (13,539 allocs, 915.5 KB) |
-| Desktop Chrome         | 239.6 ns (0 allocs)     | 632.3 ns (4 allocs, 128 B)      | 108.9 µs (2 allocs, 176 B)      | 258.2 µs (282 allocs, 20.22 KB)    |
-| Mobile Safari          | 388.1 ns (0 allocs)     | 981.6 ns (6 allocs, 164 B)      | 153.6 µs (3 allocs, 192 B)      | 341.1 µs (361 allocs, 24.62 KB)    |
-| Android WebView        | 428.6 ns (0 allocs)     | 771.5 ns (5 allocs, 160 B)      | 113.3 µs (4 allocs, 240 B)      | 409.5 µs (191 allocs, 13.19 KB)    |
-| Bot (`HeadlessChrome`) | 248.6 ns (0 allocs)     | 639.3 ns (4 allocs, 128 B)      | 109.5 µs (2 allocs, 160 B)      | 364.5 µs (260 allocs, 18.44 KB)    |
+| Library                 | Median Latency | Throughput    | Heap Allocations         |
+| ----------------------- | -------------- | ------------- | ------------------------ |
+| `user-agent-classifier` | 26.93 µs       | 2.71 Mitem/s  | 0 allocs (0 B)           |
+| `woothee`               | 64.89 µs       | 1.124 Mitem/s | 339 allocs (10.26 KB)    |
+| `user-agent-parser`     | 9.056 ms       | 8.06 Kitem/s  | 206 allocs (12.62 KB)    |
+| `uaparser`              | 24.92 ms       | 2.928 Kitem/s | 13,539 allocs (915.5 KB) |
 
-Median latency and heap allocations reported by `divan` (`just bench`).
+Median latency, throughput, and heap allocations reported by `divan`
+(`just bench`).
 
 ## Development
 
