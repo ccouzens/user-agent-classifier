@@ -3,6 +3,30 @@ use super::{
     tokenizer::{Tokenizer, UaToken},
 };
 
+/**
+Parses a `User-Agent` header string in a single pass without heap allocations
+or regular expressions, returning a [`Classification`] with `browser.name`
+borrowed from `ua`.
+
+Note that `browser.name` is unbounded; do not use it directly as a
+high-cardinality metric label without an allowlist or cap.
+
+# Examples
+
+```
+use user_agent_classifier::{Engine, ReportedPlatform, parse};
+
+let ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 27_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1";
+let parsed = parse(ua);
+
+assert!(parsed.is_mobile);
+assert!(!parsed.is_webview);
+assert!(!parsed.is_bot);
+assert_eq!(parsed.reported_platform, ReportedPlatform::IPhone);
+assert_eq!(parsed.engine, Engine::WebKit { version: Some((27, 2)) });
+assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2)))));
+```
+*/
 pub fn parse(ua: &str) -> Classification<'_> {
     let mut reported_platform = ReportedPlatform::Other;
     let mut is_mobile = false;
