@@ -49,7 +49,8 @@ and none on `other`).
 ## Development
 
 ```sh
-cargo test --workspace
-cargo clippy --workspace --all-targets
-cargo fmt --check
+just check
+just test
+just format
+just format-check
 ```
