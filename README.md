@@ -5,9 +5,9 @@ observability — extracts rendering engine, platform, mobile, WebView, bot, and
 browser. The focus is on `User-Agent` strings that a contemporary website may
 see in its traffic.
 
-`UserAgentClassifier::parse(ua)` scans the string in a single pass without heap
-allocations or regular expressions and borrows `browser.name` directly from the
-input slice.
+`user_agent_classifier::parse(ua)` scans the string in a single pass without
+heap allocations or regular expressions and borrows `browser.name` directly from
+the input slice.
 
 See
 [prometheus-labels.md](https://github.com/ccouzens/user-agent-classifier/blob/main/prometheus-labels.md)
@@ -20,10 +20,10 @@ API documentation is available on
 ## Usage
 
 ```rust
-use user_agent_classifier::{Engine, ReportedPlatform, UserAgentClassifier};
+use user_agent_classifier::{Engine, ReportedPlatform, parse};
 
 let ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 27_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1";
-let parsed = UserAgentClassifier::parse(ua);
+let parsed = parse(ua);
 
 assert!(parsed.is_mobile);
 assert!(!parsed.is_webview);
@@ -44,8 +44,8 @@ present on engine variants that carry them (`major` on `blink` and `gecko`,
 ### Cargo features
 
 - `serde` (enabled by default): Implements `serde::Serialize` for
-  `UserAgentClassifier`, `ReportedPlatform`, `Engine`, and `Browser`. Disable
-  with `default-features = false` for zero runtime dependencies.
+  `Classification`, `ReportedPlatform`, `Engine`, and `Browser`. Disable with
+  `default-features = false` for zero runtime dependencies.
 
 ## Workspace layout
 
