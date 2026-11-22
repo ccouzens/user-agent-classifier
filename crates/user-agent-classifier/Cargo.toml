@@ -11,7 +11,7 @@ keywords = ["browser", "observability", "parser", "user-agent"]
 categories = ["parser-implementations", "web-programming"]
 
 [dependencies]
-serde = { version = "1.0.229", features = ["derive"], optional = true }
+serde = { version = "1.0.229", default-features = false, features = ["derive"], optional = true }
 
 [dev-dependencies]
 assert-json-diff = "2.0.2"

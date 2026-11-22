@@ -108,6 +108,7 @@ fn split_word(s: &str) -> (&str, &str) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::{vec, vec::Vec};
 
     #[test]
     fn test_tokenize_chrome_mobile() {

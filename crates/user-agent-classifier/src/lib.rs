@@ -1,3 +1,8 @@
+#![no_std]
+
+#[cfg(test)]
+extern crate std;
+
 mod browser;
 mod engine;
 mod parsed_user_agent;

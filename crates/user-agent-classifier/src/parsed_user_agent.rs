@@ -11,11 +11,11 @@ Structured classification parsed from a `User-Agent` string.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize))]
 pub struct UserAgentClassifier<'a> {
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "core::ops::Not::not"))]
     pub is_mobile: bool,
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "core::ops::Not::not"))]
     pub is_webview: bool,
-    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
+    #[cfg_attr(feature = "serde", serde(skip_serializing_if = "core::ops::Not::not"))]
     pub is_bot: bool,
     pub reported_platform: ReportedPlatform,
     pub engine: Engine,
@@ -338,6 +338,8 @@ fn parse_leading_u16(s: &str) -> Option<u16> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[cfg(feature = "serde")]
+    use std::{string::String, vec::Vec};
 
     #[cfg(feature = "serde")]
     #[derive(serde::Deserialize)]
