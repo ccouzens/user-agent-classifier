@@ -4,6 +4,7 @@ use divan::counter::ItemsCount;
 use serde::Deserialize;
 use uaparser::{Parser as _, UserAgentParser};
 use user_agent_classifier::ParsedUserAgent;
+use user_agent_parser::UserAgentParser as MagicUserAgentParser;
 use woothee::parser::Parser as WootheeParser;
 
 #[global_allocator]
@@ -26,6 +27,13 @@ static WOOTHEE: LazyLock<WootheeParser> = LazyLock::new(WootheeParser::new);
 static UAPARSER: LazyLock<UserAgentParser> = LazyLock::new(|| {
     let path = concat!(env!("CARGO_MANIFEST_DIR"), "/data/regexes.yaml");
     UserAgentParser::from_yaml(path).unwrap_or_else(|err| {
+        panic!("failed to load {path}: {err} (run `just bench` to fetch regexes.yaml)")
+    })
+});
+
+static USER_AGENT_PARSER: LazyLock<MagicUserAgentParser> = LazyLock::new(|| {
+    let path = concat!(env!("CARGO_MANIFEST_DIR"), "/data/regexes.yaml");
+    MagicUserAgentParser::from_path(path).unwrap_or_else(|err| {
         panic!("failed to load {path}: {err} (run `just bench` to fetch regexes.yaml)")
     })
 });
@@ -79,6 +87,24 @@ mod parse_corpus {
                 }
             });
     }
+
+    #[divan::bench]
+    fn user_agent_parser(bencher: divan::Bencher) {
+        let corpus = &*CORPUS;
+        let parser = &*USER_AGENT_PARSER;
+        bencher
+            .counter(ItemsCount::new(corpus.len()))
+            .bench_local(|| {
+                for ua in corpus {
+                    let s = divan::black_box(ua.as_str());
+                    divan::black_box((
+                        parser.parse_product(s),
+                        parser.parse_os(s),
+                        parser.parse_device(s),
+                    ));
+                }
+            });
+    }
 }
 
 macro_rules! bench_single {
@@ -99,6 +125,16 @@ macro_rules! bench_single {
             #[divan::bench]
             fn uaparser() {
                 divan::black_box(UAPARSER.parse(divan::black_box($ua)));
+            }
+
+            #[divan::bench]
+            fn user_agent_parser() {
+                let s = divan::black_box($ua);
+                divan::black_box((
+                    USER_AGENT_PARSER.parse_product(s),
+                    USER_AGENT_PARSER.parse_os(s),
+                    USER_AGENT_PARSER.parse_device(s),
+                ));
             }
         }
     };

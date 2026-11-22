@@ -56,17 +56,17 @@ present on engine variants that carry them (`major` on `blink` and `gecko`,
 
 ## Benchmarks
 
-`crates/benchmarks` compares `user-agent-classifier` against `woothee` and
-`uaparser` over the 73 `User-Agent` strings in
+`crates/benchmarks` compares `user-agent-classifier` against `woothee`,
+`user-agent-parser`, and `uaparser` over the 73 `User-Agent` strings in
 `parsed_user_agent_test_cases.json` and representative single cases:
 
-| Benchmark              | `user-agent-classifier` | `woothee`                       | `uaparser`                         |
-| ---------------------- | ----------------------- | ------------------------------- | ---------------------------------- |
-| Full corpus (73 UAs)   | 25.06 µs (0 allocs)     | 69.72 µs (339 allocs, 10.26 KB) | 25.52 ms (13,539 allocs, 915.5 KB) |
-| Desktop Chrome         | 277.6 ns (0 allocs)     | 707.7 ns (4 allocs, 128 B)      | 296.7 µs (282 allocs, 20.22 KB)    |
-| Mobile Safari          | 354.6 ns (0 allocs)     | 1.093 µs (6 allocs, 164 B)      | 370.8 µs (361 allocs, 24.62 KB)    |
-| Android WebView        | 462.6 ns (0 allocs)     | 924 ns (5 allocs, 160 B)        | 417.1 µs (191 allocs, 13.19 KB)    |
-| Bot (`HeadlessChrome`) | 293.6 ns (0 allocs)     | 761.7 ns (4 allocs, 128 B)      | 331.4 µs (260 allocs, 18.44 KB)    |
+| Benchmark              | `user-agent-classifier` | `woothee`                       | `user-agent-parser`             | `uaparser`                         |
+| ---------------------- | ----------------------- | ------------------------------- | ------------------------------- | ---------------------------------- |
+| Full corpus (73 UAs)   | 26.01 µs (0 allocs)     | 77.94 µs (339 allocs, 10.26 KB) | 8.244 ms (206 allocs, 12.62 KB) | 24.95 ms (13,539 allocs, 915.5 KB) |
+| Desktop Chrome         | 240.8 ns (0 allocs)     | 637.1 ns (4 allocs, 128 B)      | 111.1 µs (2 allocs, 176 B)      | 275.9 µs (282 allocs, 20.22 KB)    |
+| Mobile Safari          | 338.8 ns (0 allocs)     | 902 ns (6 allocs, 164 B)        | 326.7 µs (3 allocs, 192 B)      | 333.8 µs (361 allocs, 24.62 KB)    |
+| Android WebView        | 394.3 ns (0 allocs)     | 779.3 ns (5 allocs, 160 B)      | 291.2 µs (4 allocs, 240 B)      | 370.2 µs (191 allocs, 13.19 KB)    |
+| Bot (`HeadlessChrome`) | 241.8 ns (0 allocs)     | 629.1 ns (4 allocs, 128 B)      | 205.1 µs (2 allocs, 160 B)      | 381.2 µs (260 allocs, 18.44 KB)    |
 
 Median latency and heap allocations reported by `divan` (`just bench`).
 
