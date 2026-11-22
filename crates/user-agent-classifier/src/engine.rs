@@ -2,7 +2,7 @@
 use serde::Serialize;
 
 /**
-Rendering engine and engine version parsed from a [`crate::UserAgent`].
+Rendering engine and engine version parsed from a `User-Agent` string.
 */
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(

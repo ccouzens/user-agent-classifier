@@ -2,7 +2,7 @@
 use serde::Serialize;
 
 /**
-Browser name and version parsed from a [`crate::UserAgent`].
+Browser name and version parsed from a `User-Agent` string.
 */
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize))]

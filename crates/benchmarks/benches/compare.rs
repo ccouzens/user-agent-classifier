@@ -3,7 +3,7 @@ use std::sync::LazyLock;
 use divan::counter::ItemsCount;
 use serde::Deserialize;
 use uaparser::{Parser as _, UserAgentParser};
-use user_agent_classifier::ParsedUserAgent;
+use user_agent_classifier::UserAgentClassifier;
 use user_agent_parser::UserAgentParser as MagicUserAgentParser;
 use woothee::parser::Parser as WootheeParser;
 
@@ -52,7 +52,7 @@ mod parse_corpus {
             .counter(ItemsCount::new(corpus.len()))
             .bench_local(|| {
                 for ua in corpus {
-                    divan::black_box(ParsedUserAgent::parse(divan::black_box(ua.as_str())));
+                    divan::black_box(UserAgentClassifier::parse(divan::black_box(ua.as_str())));
                 }
             });
     }

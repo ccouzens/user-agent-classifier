@@ -6,11 +6,11 @@ use super::{
 use serde::Serialize;
 
 /**
-Structured classification parsed lazily from a [`crate::UserAgent`] string.
+Structured classification parsed from a `User-Agent` string.
 */
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "serde", derive(Serialize))]
-pub struct ParsedUserAgent<'a> {
+pub struct UserAgentClassifier<'a> {
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
     pub is_mobile: bool,
     #[cfg_attr(feature = "serde", serde(skip_serializing_if = "std::ops::Not::not"))]
@@ -22,7 +22,7 @@ pub struct ParsedUserAgent<'a> {
     pub browser: Option<Browser<'a>>,
 }
 
-impl<'a> ParsedUserAgent<'a> {
+impl<'a> UserAgentClassifier<'a> {
     pub fn parse(ua: &'a str) -> Self {
         let mut reported_platform = ReportedPlatform::Other;
         let mut is_mobile = false;
@@ -357,8 +357,7 @@ mod tests {
 
         for case in cases {
             let actual =
-                serde_json::to_value(crate::UserAgent::from(case.user_agent.as_str()).parse())
-                    .unwrap();
+                serde_json::to_value(UserAgentClassifier::parse(&case.user_agent)).unwrap();
             assert_json_diff::assert_json_eq!(actual, case.expected);
         }
     }
