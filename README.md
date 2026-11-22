@@ -11,6 +11,9 @@ See [prometheus-labels.md](prometheus-labels.md) for using the classified fields
 as Prometheus metric labels (bounded values, browser allowlisting, and engine
 version bucketing).
 
+API documentation is available on
+[docs.rs](https://docs.rs/user-agent-classifier).
+
 ## Usage
 
 ```rust

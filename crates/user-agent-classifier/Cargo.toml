@@ -3,6 +3,7 @@ name = "user-agent-classifier"
 version.workspace = true
 edition.workspace = true
 description = "Zero-allocation, regex-free Rust User-Agent classifier for observability — extracts rendering engine, platform, mobile, WebView, bot, and browser."
+documentation.workspace = true
 readme = "../../README.md"
 repository.workspace = true
 license.workspace = true
