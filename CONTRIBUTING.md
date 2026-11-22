@@ -34,6 +34,8 @@ data private.
 - **Source and date**: If you are allowed to share it, include where the data
   came from and the approximate date window or day it was collected. This makes
   it possible to expire old entries years from now.
+- **Audience**: A short description of the site's users (for example, consumers
+  in Brazil or office workers in India).
 - **Anonymising traffic volume**: You can anonymise how much traffic your site
   receives by omitting the length of the collection window and only sharing
   which day it is from.
