@@ -27,6 +27,13 @@ assert_eq!(parsed.engine, Engine::WebKit { version: Some((27, 2)) });
 assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2)))));
 ```
 
+See [parsed_user_agent_test_cases.json](parsed_user_agent_test_cases.json) for a
+set of examples illustrating how various browser, WebView, and bot `User-Agent`
+strings are parsed. In the JSON output, `is_mobile`, `is_webview`, and `is_bot`
+are omitted when `false`, and engine version fields are only present on engine
+variants that carry them (`major` on `blink` and `gecko`, `version` on `webkit`,
+and none on `other`).
+
 ### Cargo features
 
 - `serde` (enabled by default): Implements `serde::Serialize` for
