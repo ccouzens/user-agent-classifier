@@ -1,0 +1,20 @@
+[package]
+name = "benchmarks"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[[bench]]
+harness = false
+name = "compare"
+
+[dependencies]
+user-agent-classifier = { path = "../user-agent-classifier", default-features = false }
+
+[dev-dependencies]
+divan = "0.1"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+uaparser = "0.6"
+woothee = "0.13"

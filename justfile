@@ -40,6 +40,11 @@ test-no-default-features:
 [parallel]
 check: format-check test check-biome check-toml check-clippy
 
+bench:
+    mkdir -p crates/benchmarks/data
+    test -f crates/benchmarks/data/regexes.yaml || curl -fsSL https://raw.githubusercontent.com/ua-parser/uap-core/master/regexes.yaml -o crates/benchmarks/data/regexes.yaml
+    cargo bench -p benchmarks
+
 check-biome:
     biome check
 

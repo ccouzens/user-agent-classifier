@@ -51,13 +51,31 @@ present on engine variants that carry them (`major` on `blink` and `gecko`,
 ## Workspace layout
 
 - `crates/user-agent-classifier`: Core Rust library crate.
+- `crates/benchmarks`: Ecosystem benchmark suite (`divan`).
 - `parsed_user_agent_test_cases.json`: Shared JSON test suite.
+
+## Benchmarks
+
+`crates/benchmarks` compares `user-agent-classifier` against `woothee` and
+`uaparser` over the 73 `User-Agent` strings in
+`parsed_user_agent_test_cases.json` and representative single cases:
+
+| Benchmark              | `user-agent-classifier` | `woothee`                       | `uaparser`                         |
+| ---------------------- | ----------------------- | ------------------------------- | ---------------------------------- |
+| Full corpus (73 UAs)   | 25.06 µs (0 allocs)     | 69.72 µs (339 allocs, 10.26 KB) | 25.52 ms (13,539 allocs, 915.5 KB) |
+| Desktop Chrome         | 277.6 ns (0 allocs)     | 707.7 ns (4 allocs, 128 B)      | 296.7 µs (282 allocs, 20.22 KB)    |
+| Mobile Safari          | 354.6 ns (0 allocs)     | 1.093 µs (6 allocs, 164 B)      | 370.8 µs (361 allocs, 24.62 KB)    |
+| Android WebView        | 462.6 ns (0 allocs)     | 924 ns (5 allocs, 160 B)        | 417.1 µs (191 allocs, 13.19 KB)    |
+| Bot (`HeadlessChrome`) | 293.6 ns (0 allocs)     | 761.7 ns (4 allocs, 128 B)      | 331.4 µs (260 allocs, 18.44 KB)    |
+
+Median latency and heap allocations reported by `divan` (`just bench`).
 
 ## Development
 
 ```sh
 just check
 just test
+just bench
 just format
 just format-check
 ```
