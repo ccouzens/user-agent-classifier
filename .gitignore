@@ -1,2 +1,4 @@
 /target
 /crates/benchmarks/data/
+/typescript/user-agent-classifier/dist
+node_modules/

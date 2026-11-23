@@ -29,7 +29,7 @@ format-check-rust:
     cargo fmt --all --check
 
 [parallel]
-test: test-default test-no-default-features
+test: test-default test-no-default-features test-ts
 
 test-default:
     cargo test --workspace
@@ -37,8 +37,14 @@ test-default:
 test-no-default-features:
     cargo test -p user-agent-classifier --no-default-features
 
+test-ts:
+    node --test typescript/user-agent-classifier/tests/*.test.mts
+
+build-ts:
+    cd typescript/user-agent-classifier && tsc
+
 [parallel]
-check: format-check test check-biome check-toml check-clippy
+check: format-check test check-biome check-toml check-clippy check-ts
 
 bench:
     mkdir -p crates/benchmarks/data
@@ -53,3 +59,12 @@ check-toml:
 
 check-clippy:
     cargo clippy --workspace --all-targets -- -D warnings
+
+[parallel]
+check-ts: check-ts-src check-ts-tests
+
+check-ts-src:
+    cd typescript/user-agent-classifier && tsc --noEmit
+
+check-ts-tests:
+    cd typescript/user-agent-classifier && tsc -p tsconfig.test.json

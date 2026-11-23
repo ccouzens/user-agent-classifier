@@ -1,0 +1,32 @@
+{
+	"name": "user-agent-classifier",
+	"version": "0.1.7",
+	"description": "Zero-dependency, regex-free TypeScript User-Agent classifier for observability — extracts rendering engine, platform, mobile, WebView, bot, and browser.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ccouzens/user-agent-classifier.git",
+		"directory": "typescript/user-agent-classifier"
+	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.mts",
+			"default": "./dist/index.mjs"
+		}
+	},
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
+	"keywords": [
+		"browser",
+		"observability",
+		"parser",
+		"user-agent"
+	],
+	"devDependencies": {
+		"@types/node": "^26.6.6"
+	}
+}

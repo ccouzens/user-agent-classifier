@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "ES2024",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"erasableSyntaxOnly": true,
+		"verbatimModuleSyntax": true,
+		"isolatedDeclarations": true,
+		"rewriteRelativeImportExtensions": true,
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"rootDir": "src",
+		"outDir": "dist",
+		"types": []
+	},
+	"include": ["src/**/*.mts"]
+}

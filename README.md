@@ -1,83 +1,41 @@
 # user-agent-classifier
 
-Zero-allocation, regex-free, `no_std` Rust `User-Agent` classifier for
-observability — extracts rendering engine, platform, mobile, WebView, bot, and
-browser. The focus is on `User-Agent` strings that a contemporary website may
-see in its traffic.
+Regex-free, single-pass `User-Agent` classifier for observability — extracts
+rendering engine, platform, mobile, WebView, bot, and browser. The focus is on
+`User-Agent` strings that a contemporary website may see in its traffic.
 
-`user_agent_classifier::parse(ua)` scans the string in a single pass without
-heap allocations or regular expressions and borrows `browser.name` directly from
-the input slice.
+Available in both **Rust** and **TypeScript**, sharing a common design and test
+suite:
 
-See
-[prometheus-labels.md](https://github.com/ccouzens/user-agent-classifier/blob/main/prometheus-labels.md)
-for using the classified fields as Prometheus metric labels (bounded values,
-browser allowlisting, and engine version bucketing).
+- **Rust:**
+  [crates/user-agent-classifier](crates/user-agent-classifier/README.md)
+  (`no_std`, zero-allocation, `crates.io` / `docs.rs`)
+- **TypeScript:**
+  [typescript/user-agent-classifier](typescript/user-agent-classifier/README.md)
+  (zero-dependency, ESM-only)
 
-API documentation is available on
-[docs.rs](https://docs.rs/user-agent-classifier).
+See [prometheus-labels.md](prometheus-labels.md) for using the classified fields
+as Prometheus metric labels (bounded values, browser allowlisting, and engine
+version bucketing).
 
-## Usage
-
-```bash
-cargo add user-agent-classifier
-```
-
-```rust
-use user_agent_classifier::{Engine, ReportedPlatform, parse};
-
-let ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 27_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1";
-let parsed = parse(ua);
-
-assert!(parsed.is_mobile);
-assert!(!parsed.is_webview);
-assert!(!parsed.is_bot);
-assert_eq!(parsed.reported_platform, ReportedPlatform::IPhone);
-assert_eq!(parsed.engine, Engine::WebKit { version: Some((27, 2)) });
-assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2)))));
-```
-
-See
-[parsed_user_agent_test_cases.json](https://github.com/ccouzens/user-agent-classifier/blob/main/parsed_user_agent_test_cases.json)
-for a set of examples illustrating how various browser, WebView, and bot
-`User-Agent` strings are parsed. In the JSON output, `is_mobile`, `is_webview`,
-and `is_bot` are omitted when `false`, and engine version fields are only
-present on engine variants that carry them (`major` on `blink` and `gecko`,
-`version` on `webkit`, and none on `other`).
-
-### Cargo features
-
-- `serde` (enabled by default): Implements `serde::Serialize` for
-  `Classification`, `ReportedPlatform`, `Engine`, and `Browser`. Disable with
-  `default-features = false` for zero runtime dependencies.
+See [parsed_user_agent_test_cases.json](parsed_user_agent_test_cases.json) for a
+shared set of examples illustrating how various browser, WebView, and bot
+`User-Agent` strings are parsed.
 
 ## Workspace layout
 
 - `crates/user-agent-classifier`: Core Rust library crate.
-- `crates/benchmarks`: Ecosystem benchmark suite (`divan`).
-- `parsed_user_agent_test_cases.json`: Shared JSON test suite.
-
-## Benchmarks
-
-`crates/benchmarks` compares `user-agent-classifier` against `woothee`,
-`user-agent-parser`, and `uaparser` over the 73 `User-Agent` strings in
-`parsed_user_agent_test_cases.json`:
-
-| Library                 | Median Latency | Throughput    | Heap Allocations         |
-| ----------------------- | -------------- | ------------- | ------------------------ |
-| `user-agent-classifier` | 26.93 µs       | 2.71 Mitem/s  | 0 allocs (0 B)           |
-| `woothee`               | 64.89 µs       | 1.124 Mitem/s | 339 allocs (10.26 KB)    |
-| `user-agent-parser`     | 9.056 ms       | 8.06 Kitem/s  | 206 allocs (12.62 KB)    |
-| `uaparser`              | 24.92 ms       | 2.928 Kitem/s | 13,539 allocs (915.5 KB) |
-
-Median latency, throughput, and heap allocations reported by `divan`
-(`just bench`).
+- `crates/benchmarks`: Rust ecosystem benchmark suite (`divan`).
+- `typescript/user-agent-classifier`: Core TypeScript library package.
+- `parsed_user_agent_test_cases.json`: Shared JSON test suite used by both Rust
+  and TypeScript.
 
 ## Development
 
 ```sh
 just check
 just test
+just build-ts
 just bench
 just format
 just format-check
@@ -85,13 +43,10 @@ just format-check
 
 ## Contributing
 
-See
-[CONTRIBUTING.md](https://github.com/ccouzens/user-agent-classifier/blob/main/CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Links
 
-[crates.io](https://crates.io/crates/user-agent-classifier)
-
-[DOCS.RS](https://docs.rs/user-agent-classifier/latest/user_agent_classifier/)
-
-[GitHub](https://github.com/ccouzens/user-agent-classifier)
+- [Rust crate on crates.io](https://crates.io/crates/user-agent-classifier)
+- [Rust docs on docs.rs](https://docs.rs/user-agent-classifier/latest/user_agent_classifier/)
+- [GitHub](https://github.com/ccouzens/user-agent-classifier)

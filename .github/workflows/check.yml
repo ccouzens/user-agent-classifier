@@ -14,6 +14,8 @@ jobs:
       - uses: actions/checkout@v7
       - uses: jdx/mise-action@v5
         with:
-          install_args: biome just rust tombi
+          install_args: biome just node npm:typescript rust tombi
+      - name: Install TypeScript devDependencies
+        run: npm ci --prefix typescript/user-agent-classifier
       - name: Run checks
         run: just check
