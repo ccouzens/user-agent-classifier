@@ -64,7 +64,7 @@ url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-arm64.tar.gz"
 
 [[tools."npm:typescript"]]
 version = "7.0.2"
-aube = { path = ".mise/locks/npm-typescript/7.0.2", digest = "sha256:3d06b3b23564c68cdad7815c356edb1506fab1c42bfb8c54234134fd9650ec17" }
+aube = { path = ".mise/locks/npm-typescript/7.0.2", digest = "sha256:740e8cae01ef0478715bff03c03efc2812d1cd26156a96c4cf66c9f152fab572" }
 backend = "npm:typescript"
 specifiers = ["latest"]
 
