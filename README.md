@@ -83,3 +83,11 @@ just format-check
 
 See
 [CONTRIBUTING.md](https://github.com/ccouzens/user-agent-classifier/blob/main/CONTRIBUTING.md).
+
+## Links
+
+[crates.io](https://crates.io/crates/user-agent-classifier)
+
+[DOCS.RS](https://docs.rs/user-agent-classifier/latest/user_agent_classifier/)
+
+[GitHub](https://github.com/ccouzens/user-agent-classifier)
