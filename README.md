@@ -19,7 +19,9 @@ API documentation is available on
 
 ## Usage
 
-ˋˋˋbash cargo add user-agent-classifier ˋˋˋ
+```bash
+cargo add user-agent-classifier
+```
 
 ```rust
 use user_agent_classifier::{Engine, ReportedPlatform, parse};
