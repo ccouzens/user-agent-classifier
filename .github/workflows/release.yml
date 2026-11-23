@@ -48,4 +48,4 @@ jobs:
         run: just build-ts
       - name: Publish to npm
         working-directory: typescript/user-agent-classifier
-        run: npm publish --provenance --access public
+        run: npm stage publish --provenance --access public
