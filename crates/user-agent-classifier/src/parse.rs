@@ -35,6 +35,8 @@ pub fn parse(ua: &str) -> Classification<'_> {
 
     let mut firefox = None;
     let mut chrome = None;
+    let mut ladybird = None;
+    let mut servo = None;
     let mut version = None;
     let mut has_safari = false;
     let mut has_apple_webkit = false;
@@ -123,6 +125,20 @@ pub fn parse(ua: &str) -> Classification<'_> {
                     });
                 }
                 "Firefox" => firefox = parse_version(number),
+                "Ladybird" => {
+                    ladybird = Some(parse_version_3(number));
+                    specific_browser = Some(Browser {
+                        name,
+                        version: parse_version(number),
+                    });
+                }
+                "Servo" => {
+                    servo = Some(parse_version_3(number));
+                    specific_browser = Some(Browser {
+                        name,
+                        version: parse_version(number),
+                    });
+                }
                 _ => {
                     if name == "facebookexternalhit" {
                         saw_facebookexternalhit = true;
@@ -258,7 +274,11 @@ pub fn parse(ua: &str) -> Classification<'_> {
         })
     });
 
-    let engine = if let Some((major, _)) = chrome {
+    let engine = if let Some(version) = ladybird {
+        Engine::Ladybird { version }
+    } else if let Some(version) = servo {
+        Engine::Servo { version }
+    } else if let Some((major, _)) = chrome {
         Engine::Blink { major }
     } else if let Some((major, _)) = firefox {
         Engine::Gecko { major }
@@ -327,6 +347,15 @@ fn parse_version(version: &str) -> Option<(u16, u16)> {
     Some((major, minor))
 }
 
+fn parse_version_3(version: &str) -> Option<(u16, u16, u16)> {
+    let version = version.strip_prefix(['v', 'V']).unwrap_or(version);
+    let mut parts = version.split('.');
+    let major = parse_leading_u16(parts.next()?)?;
+    let minor = parts.next().and_then(parse_leading_u16).unwrap_or(0);
+    let patch = parts.next().and_then(parse_leading_u16).unwrap_or(0);
+    Some((major, minor, patch))
+}
+
 fn parse_leading_u16(s: &str) -> Option<u16> {
     let digits_end = s
         .bytes()
@@ -366,7 +395,7 @@ mod tests {
     #[test]
     fn engine_and_platform_helpers() {
         assert_eq!(Engine::Blink { major: 156 }.as_str(), "blink");
-        assert_eq!(Engine::Blink { major: 156 }.version(), Some((156, 0)));
+        assert_eq!(Engine::Blink { major: 156 }.version(), Some((156, 0, 0)));
         assert_eq!(Engine::Gecko { major: 160 }.as_str(), "gecko");
         assert_eq!(
             Engine::WebKit {
@@ -380,7 +409,35 @@ mod tests {
                 version: Some((27, 2))
             }
             .version(),
-            Some((27, 2))
+            Some((27, 2, 0))
+        );
+        assert_eq!(
+            Engine::Ladybird {
+                version: Some((2026, 47, 7))
+            }
+            .as_str(),
+            "ladybird"
+        );
+        assert_eq!(
+            Engine::Ladybird {
+                version: Some((2026, 47, 7))
+            }
+            .version(),
+            Some((2026, 47, 7))
+        );
+        assert_eq!(
+            Engine::Servo {
+                version: Some((0, 8, 0))
+            }
+            .as_str(),
+            "servo"
+        );
+        assert_eq!(
+            Engine::Servo {
+                version: Some((0, 8, 0))
+            }
+            .version(),
+            Some((0, 8, 0))
         );
         assert_eq!(Engine::Other.as_str(), "other");
         assert_eq!(Engine::Other.version(), None);

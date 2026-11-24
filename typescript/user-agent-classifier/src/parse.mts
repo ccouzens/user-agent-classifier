@@ -1,6 +1,6 @@
 import type { Browser } from "./browser.mts";
 import type { Classification } from "./classification.mts";
-import type { Engine, Version } from "./engine.mts";
+import type { Engine, MinorVersion, PatchVersion } from "./engine.mts";
 import {
 	type ReportedPlatform,
 	reportedPlatformFromToken,
@@ -20,9 +20,11 @@ export function parse(ua: string): Classification {
 	let isBot = false;
 	let sawWv = false;
 
-	let firefox: Version | undefined;
-	let chrome: Version | undefined;
-	let version: Version | undefined;
+	let firefox: MinorVersion | undefined;
+	let chrome: MinorVersion | undefined;
+	let ladybird: PatchVersion | null | undefined;
+	let servo: PatchVersion | null | undefined;
+	let version: MinorVersion | undefined;
 	let hasSafari = false;
 	let hasAppleWebKit = false;
 	let specificBrowser: Browser | undefined;
@@ -136,6 +138,20 @@ export function parse(ua: string): Classification {
 					case "Firefox":
 						firefox = parseVersion(number);
 						break;
+					case "Ladybird":
+						ladybird = parseVersion3(number) ?? null;
+						specificBrowser = {
+							name,
+							version: parseVersion(number) ?? null,
+						};
+						break;
+					case "Servo":
+						servo = parseVersion3(number) ?? null;
+						specificBrowser = {
+							name,
+							version: parseVersion(number) ?? null,
+						};
+						break;
 					default: {
 						if (name === "facebookexternalhit") {
 							sawFacebookexternalhit = true;
@@ -157,7 +173,7 @@ export function parse(ua: string): Classification {
 			case "square_brackets": {
 				const { content } = token;
 				let isFacebook = false;
-				let fbVersion: Version | undefined;
+				let fbVersion: MinorVersion | undefined;
 				for (const entry of content.split(";")) {
 					const pair = splitOnce(entry, "/");
 					if (pair !== undefined) {
@@ -268,7 +284,11 @@ export function parse(ua: string): Classification {
 	}
 
 	let engine: Engine;
-	if (chrome !== undefined) {
+	if (ladybird !== undefined) {
+		engine = { name: "ladybird", version: ladybird };
+	} else if (servo !== undefined) {
+		engine = { name: "servo", version: servo };
+	} else if (chrome !== undefined) {
 		engine = { name: "blink", major: chrome[0] };
 	} else if (firefox !== undefined) {
 		engine = { name: "gecko", major: firefox[0] };
@@ -358,7 +378,7 @@ function isBotName(name: string): boolean {
 	return false;
 }
 
-function parseVersion(raw: string): Version | undefined {
+function parseVersion(raw: string): MinorVersion | undefined {
 	const version =
 		raw.startsWith("v") || raw.startsWith("V") ? raw.slice(1) : raw;
 	const parts = version.split(".");
@@ -373,6 +393,25 @@ function parseVersion(raw: string): Version | undefined {
 	const second = parts[1];
 	const minor = second !== undefined ? (parseLeadingU16(second) ?? 0) : 0;
 	return [major, minor];
+}
+
+function parseVersion3(raw: string): PatchVersion | undefined {
+	const version =
+		raw.startsWith("v") || raw.startsWith("V") ? raw.slice(1) : raw;
+	const parts = version.split(".");
+	const first = parts[0];
+	if (first === undefined) {
+		return undefined;
+	}
+	const major = parseLeadingU16(first);
+	if (major === undefined) {
+		return undefined;
+	}
+	const second = parts[1];
+	const minor = second !== undefined ? (parseLeadingU16(second) ?? 0) : 0;
+	const third = parts[2];
+	const patch = third !== undefined ? (parseLeadingU16(third) ?? 0) : 0;
+	return [major, minor, patch];
 }
 
 function parseLeadingU16(s: string): number | undefined {

@@ -21,6 +21,12 @@ pub enum Engine {
     WebKit {
         version: Option<(u16, u16)>,
     },
+    Ladybird {
+        version: Option<(u16, u16, u16)>,
+    },
+    Servo {
+        version: Option<(u16, u16, u16)>,
+    },
     Other,
 }
 
@@ -30,14 +36,20 @@ impl Engine {
             Self::Blink { .. } => "blink",
             Self::Gecko { .. } => "gecko",
             Self::WebKit { .. } => "webkit",
+            Self::Ladybird { .. } => "ladybird",
+            Self::Servo { .. } => "servo",
             Self::Other => "other",
         }
     }
 
-    pub const fn version(&self) -> Option<(u16, u16)> {
+    pub const fn version(&self) -> Option<(u16, u16, u16)> {
         match self {
-            Self::Blink { major } | Self::Gecko { major } => Some((*major, 0)),
-            Self::WebKit { version } => *version,
+            Self::Blink { major } | Self::Gecko { major } => Some((*major, 0, 0)),
+            Self::WebKit { version } => match *version {
+                Some((major, minor)) => Some((major, minor, 0)),
+                None => None,
+            },
+            Self::Ladybird { version } | Self::Servo { version } => *version,
             Self::Other => None,
         }
     }

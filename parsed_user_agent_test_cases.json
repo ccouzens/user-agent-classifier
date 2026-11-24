@@ -528,5 +528,17 @@
 		"reported_platform": "Android",
 		"engine": { "name": "blink", "major": 128 },
 		"browser": { "name": "Facebook", "version": [520, 0] }
+	},
+	{
+		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Ladybird/2026.47.7 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
+		"reported_platform": "Macintosh",
+		"engine": { "name": "ladybird", "version": [2026, 47, 7] },
+		"browser": { "name": "Ladybird", "version": [2026, 47] }
+	},
+	{
+		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:153.0) Servo/0.8.0 Firefox/153.0",
+		"reported_platform": "Macintosh",
+		"engine": { "name": "servo", "version": [0, 8, 0] },
+		"browser": { "name": "Servo", "version": [0, 8] }
 	}
 ]

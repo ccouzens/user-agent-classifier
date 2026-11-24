@@ -16,14 +16,16 @@ directly as Prometheus labels) from **unbounded** fields (`browser.name`,
 
 ### Engine (`engine`)
 
-`Engine::as_str()` (ignoring its version fields) has **4** possible values:
+`Engine::as_str()` (ignoring its version fields) has **6** possible values:
 
-| Variant                 | `as_str()` / Label Value | Description                                                                                                                    |
-| :---------------------- | :----------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
-| `Engine::Blink { .. }`  | `"blink"`                | Chromium / Blink rendering engine (`Chrome`, `Edg`, `SamsungBrowser`, `OPR`, Android WebView, etc.)                            |
-| `Engine::Gecko { .. }`  | `"gecko"`                | Mozilla Gecko rendering engine (`Firefox` on desktop and Android)                                                              |
-| `Engine::WebKit { .. }` | `"webkit"`               | Apple WebKit rendering engine (`Safari`, `WKWebView`, and all iOS/iPadOS browsers including `CriOS`, `FxiOS`, `EdgiOS`, `GSA`) |
-| `Engine::Other`         | `"other"`                | Non-browser clients, bots without a rendering engine token, or unrecognised engines                                            |
+| Variant                   | `as_str()` / Label Value | Description                                                                                                                    |
+| :------------------------ | :----------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| `Engine::Blink { .. }`    | `"blink"`                | Chromium / Blink rendering engine (`Chrome`, `Edg`, `SamsungBrowser`, `OPR`, Android WebView, etc.)                            |
+| `Engine::Gecko { .. }`    | `"gecko"`                | Mozilla Gecko rendering engine (`Firefox` on desktop and Android)                                                              |
+| `Engine::WebKit { .. }`   | `"webkit"`               | Apple WebKit rendering engine (`Safari`, `WKWebView`, and all iOS/iPadOS browsers including `CriOS`, `FxiOS`, `EdgiOS`, `GSA`) |
+| `Engine::Ladybird { .. }` | `"ladybird"`             | Ladybird browser (`Ladybird`)                                                                                                  |
+| `Engine::Servo { .. }`    | `"servo"`                | Servo rendering engine (`Servo`)                                                                                               |
+| `Engine::Other`           | `"other"`                | Non-browser clients, bots without a rendering engine token, or unrecognised engines                                            |
 
 ### Reported Platform (`reported_platform`)
 
