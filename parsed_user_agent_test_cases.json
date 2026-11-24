@@ -2,543 +2,987 @@
 	{
 		"user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
 		"reported_platform": "Linux",
-		"engine": { "name": "blink", "major": 156 },
-		"browser": { "name": "Chrome", "version": [156, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 156
+		},
+		"browser": {
+			"name": "Chrome",
+			"version": [156, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36",
 		"is_bot": true,
 		"reported_platform": "Linux",
-		"engine": { "name": "blink", "major": 158 },
-		"browser": { "name": "HeadlessChrome", "version": [158, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 158
+		},
+		"browser": {
+			"name": "HeadlessChrome",
+			"version": [158, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0",
 		"is_bot": true,
 		"reported_platform": "Linux",
-		"engine": { "name": "blink", "major": 136 },
-		"browser": { "name": "Edg", "version": [136, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 136
+		},
+		"browser": {
+			"name": "Edg",
+			"version": [136, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
 		"is_mobile": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "Chrome", "version": [157, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "Chrome",
+			"version": [157, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "Chrome", "version": [157, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "Chrome",
+			"version": [157, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/157.0.0.0 Mobile Safari/537.36",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "Chrome", "version": [157, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "Chrome",
+			"version": [157, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; Device-wv) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "Chrome", "version": [157, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "Chrome",
+			"version": [157, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 11; moto g(7) power Build/QPO30.52-29; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.0.0 Mobile Safari/537.36",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 130 },
-		"browser": { "name": "Chrome", "version": [130, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 130
+		},
+		"browser": {
+			"name": "Chrome",
+			"version": [130, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/156.0.0.0 Mobile/15E148 Safari/604.1",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "CriOS", "version": [156, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "CriOS",
+			"version": [156, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:160.0) Gecko/20100101 Firefox/160.0",
 		"reported_platform": "Linux",
-		"engine": { "name": "gecko", "major": 160 },
-		"browser": { "name": "Firefox", "version": [160, 0] }
+		"engine": {
+			"name": "gecko",
+			"major": 160
+		},
+		"browser": {
+			"name": "Firefox",
+			"version": [160, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) FxiOS/160.0 Mobile/15E148 Safari/605.1.15",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "FxiOS", "version": [160, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "FxiOS",
+			"version": [160, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15",
 		"reported_platform": "Macintosh",
-		"engine": { "name": "webkit", "version": [27, 2] },
-		"browser": { "name": "Safari", "version": [27, 2] }
+		"engine": {
+			"name": "webkit",
+			"version": [27, 2]
+		},
+		"browser": {
+			"name": "Safari",
+			"version": [27, 2, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3 Mobile/15E148 Safari/604.1",
 		"is_mobile": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [18, 3] },
-		"browser": { "name": "Safari", "version": [18, 3] }
+		"engine": {
+			"name": "webkit",
+			"version": [18, 3]
+		},
+		"browser": {
+			"name": "Safari",
+			"version": [18, 3, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0",
 		"reported_platform": "Windows",
-		"engine": { "name": "blink", "major": 156 },
-		"browser": { "name": "Edg", "version": [156, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 156
+		},
+		"browser": {
+			"name": "Edg",
+			"version": [156, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 EdgiOS/156.0.0.0 Mobile/15E148 Safari/605.1.15",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [18, 0] },
-		"browser": { "name": "EdgiOS", "version": [156, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": [18, 0]
+		},
+		"browser": {
+			"name": "EdgiOS",
+			"version": [156, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36 OPR/142.0.0.0",
 		"reported_platform": "CrOS",
-		"engine": { "name": "blink", "major": 156 },
-		"browser": { "name": "OPR", "version": [142, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 156
+		},
+		"browser": {
+			"name": "OPR",
+			"version": [142, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Mobile Safari/537.36 SamsungBrowser/29.1",
 		"is_mobile": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 140 },
-		"browser": { "name": "SamsungBrowser", "version": [29, 1] }
+		"engine": {
+			"name": "blink",
+			"major": 140
+		},
+		"browser": {
+			"name": "SamsungBrowser",
+			"version": [29, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Silk/130.2.0 like Chrome/130.0.0.0 Safari/537.36",
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 130 },
-		"browser": { "name": "Silk", "version": [130, 2] }
+		"engine": {
+			"name": "blink",
+			"major": 130
+		},
+		"browser": {
+			"name": "Silk",
+			"version": [130, 2, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Mobile Safari/537.36 DuckDuckGo/5",
 		"is_mobile": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 156 },
-		"browser": { "name": "DuckDuckGo", "version": [5, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 156
+		},
+		"browser": {
+			"name": "DuckDuckGo",
+			"version": [5, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/156.0.0.0 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/490.0.0.0;IABMV/1;]",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 156 },
-		"browser": { "name": "Facebook", "version": [490, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 156
+		},
+		"browser": {
+			"name": "Facebook",
+			"version": [490, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [FBAN/FBIOS;FBAV/490.0.0.0;]",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "Facebook", "version": [490, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "Facebook",
+			"version": [490, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/156.0.0.0 Mobile Safari/537.36 Instagram 360.0.0.0 Android (34/14)",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 156 },
-		"browser": { "name": "Instagram", "version": [360, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 156
+		},
+		"browser": {
+			"name": "Instagram",
+			"version": [360, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 360.0.0.0 (iPhone16,1; iOS 18_0)",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "Instagram", "version": [360, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "Instagram",
+			"version": [360, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) GSA/350.0.0 Mobile/15E148 Safari/604.1",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "GSA", "version": [350, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "GSA",
+			"version": [350, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "WKWebView", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "WKWebView",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "curl/8.7.1",
 		"reported_platform": "Other",
-		"engine": { "name": "other" },
-		"browser": { "name": "curl", "version": [8, 7] }
+		"engine": {
+			"name": "other"
+		},
+		"browser": {
+			"name": "curl",
+			"version": [8, 7, 1]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 (compatible; meta-webindexer/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler))",
 		"is_bot": true,
 		"reported_platform": "Macintosh",
-		"engine": { "name": "blink", "major": 145 },
-		"browser": { "name": "meta-webindexer", "version": [1, 1] }
+		"engine": {
+			"name": "blink",
+			"major": 145
+		},
+		"browser": {
+			"name": "meta-webindexer",
+			"version": [1, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0 (compatible; meta-webindexer/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler))",
 		"is_bot": true,
 		"reported_platform": "Windows",
-		"engine": { "name": "blink", "major": 145 },
-		"browser": { "name": "meta-webindexer", "version": [1, 1] }
+		"engine": {
+			"name": "blink",
+			"major": 145
+		},
+		"browser": {
+			"name": "meta-webindexer",
+			"version": [1, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:147.0) Gecko/20100101 Firefox/147.0 (compatible; meta-webindexer/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler))",
 		"is_bot": true,
 		"reported_platform": "Macintosh",
-		"engine": { "name": "gecko", "major": 147 },
-		"browser": { "name": "meta-webindexer", "version": [1, 1] }
+		"engine": {
+			"name": "gecko",
+			"major": 147
+		},
+		"browser": {
+			"name": "meta-webindexer",
+			"version": [1, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.8103.78 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
 		"is_mobile": true,
 		"is_bot": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "Googlebot", "version": [2, 1] }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "Googlebot",
+			"version": [2, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.8103.78 Mobile Safari/537.36 (compatible; AdsBot-Google-Mobile; +http://www.google.com/mobile/adsbot.html)",
 		"is_mobile": true,
 		"is_bot": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "AdsBot-Google-Mobile", "version": null }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "AdsBot-Google-Mobile",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPad; CPU OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/605.1.15 (compatible; Google-HotelAdsVerifier/2.0)",
 		"is_mobile": true,
 		"is_bot": true,
 		"reported_platform": "iPad",
-		"engine": { "name": "webkit", "version": [17, 4] },
-		"browser": { "name": "Google-HotelAdsVerifier", "version": [2, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": [17, 4]
+		},
+		"browser": {
+			"name": "Google-HotelAdsVerifier",
+			"version": [2, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (compatible; Baiduspider-render/2.0; +http://www.baidu.com/search/spider.html)",
 		"is_bot": true,
 		"reported_platform": "Other",
-		"engine": { "name": "other" },
-		"browser": { "name": "Baiduspider-render", "version": [2, 0] }
+		"engine": {
+			"name": "other"
+		},
+		"browser": {
+			"name": "Baiduspider-render",
+			"version": [2, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (compatible; adidxbot/2.0; +http://www.bing.com/bingbot.htm) AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36",
 		"is_bot": true,
 		"reported_platform": "Other",
-		"engine": { "name": "blink", "major": 116 },
-		"browser": { "name": "bingbot", "version": [2, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 116
+		},
+		"browser": {
+			"name": "bingbot",
+			"version": [2, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)",
 		"is_bot": true,
 		"reported_platform": "Other",
-		"engine": { "name": "other" },
-		"browser": { "name": "SemrushBot", "version": [7, 0] }
+		"engine": {
+			"name": "other"
+		},
+		"browser": {
+			"name": "SemrushBot",
+			"version": [7, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)",
 		"is_bot": true,
 		"reported_platform": "Other",
-		"engine": { "name": "other" },
-		"browser": { "name": "MJ12bot", "version": [1, 4] }
+		"engine": {
+			"name": "other"
+		},
+		"browser": {
+			"name": "MJ12bot",
+			"version": [1, 4, 8]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)",
 		"is_bot": true,
 		"reported_platform": "Windows",
-		"engine": { "name": "other" },
-		"browser": { "name": "MSIE", "version": null }
+		"engine": {
+			"name": "other"
+		},
+		"browser": {
+			"name": "MSIE",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (compatible) AI2Bot (+https://www.allenai.org/crawler)",
 		"is_bot": true,
 		"reported_platform": "Other",
-		"engine": { "name": "other" },
-		"browser": { "name": "AI2Bot", "version": null }
+		"engine": {
+			"name": "other"
+		},
+		"browser": {
+			"name": "AI2Bot",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36; compatible; OAI-SearchBot/1.4; +https://openai.com/searchbot",
 		"is_bot": true,
 		"reported_platform": "Macintosh",
-		"engine": { "name": "blink", "major": 131 },
-		"browser": { "name": "OAI-SearchBot", "version": [1, 4] }
+		"engine": {
+			"name": "blink",
+			"major": 131
+		},
+		"browser": {
+			"name": "OAI-SearchBot",
+			"version": [1, 4, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot",
 		"is_bot": true,
 		"reported_platform": "Other",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "ChatGPT-User", "version": [1, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "ChatGPT-User",
+			"version": [1, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ShapBot/0.1.0",
 		"is_bot": true,
 		"reported_platform": "Other",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "ShapBot", "version": [0, 1] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "ShapBot",
+			"version": [0, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15 (Applebot/0.1; +http://www.apple.com/go/applebot)",
 		"is_bot": true,
 		"reported_platform": "Macintosh",
-		"engine": { "name": "webkit", "version": [17, 4] },
-		"browser": { "name": "Applebot", "version": [0, 1] }
+		"engine": {
+			"name": "webkit",
+			"version": [17, 4]
+		},
+		"browser": {
+			"name": "Applebot",
+			"version": [0, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36 Chrome-Lighthouse",
 		"is_mobile": true,
 		"is_bot": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 136 },
-		"browser": { "name": "Chrome-Lighthouse", "version": null }
+		"engine": {
+			"name": "blink",
+			"major": 136
+		},
+		"browser": {
+			"name": "Chrome-Lighthouse",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.4 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.4 facebookexternalhit/1.1 Facebot Twitterbot/1.0",
 		"is_bot": true,
 		"reported_platform": "Macintosh",
-		"engine": { "name": "webkit", "version": [9, 0] },
-		"browser": { "name": "LinkPresentation", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": [9, 0]
+		},
+		"browser": {
+			"name": "LinkPresentation",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)",
 		"is_bot": true,
 		"reported_platform": "Windows",
-		"engine": { "name": "gecko", "major": 11 },
-		"browser": { "name": "GoogleImageProxy", "version": null }
+		"engine": {
+			"name": "gecko",
+			"major": 11
+		},
+		"browser": {
+			"name": "GoogleImageProxy",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/158.0.0.0 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/588.0.0.42.55;IABMV/1;] FBNV/500",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 158 },
-		"browser": { "name": "Facebook", "version": [588, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 158
+		},
+		"browser": {
+			"name": "Facebook",
+			"version": [588, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_6_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/23G90 Instagram 456.0.0.36.62 (iPhone18,3; iOS 26_6_2; en_GB; en-GB; scale=3.00; 1206x2622; IABMV/1; 1114925422) NW/8 Safari/604.1",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "Instagram", "version": [456, 0] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "Instagram",
+			"version": [456, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/31.0 Chrome/148.0.0.0 Mobile Safari/537.36",
 		"is_mobile": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 148 },
-		"browser": { "name": "SamsungBrowser", "version": [31, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 148
+		},
+		"browser": {
+			"name": "SamsungBrowser",
+			"version": [31, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/31.0 Chrome/148.0.0.0 Safari/537.36",
 		"reported_platform": "Linux",
-		"engine": { "name": "blink", "major": 148 },
-		"browser": { "name": "SamsungBrowser", "version": [31, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 148
+		},
+		"browser": {
+			"name": "SamsungBrowser",
+			"version": [31, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko)",
 		"is_webview": true,
 		"reported_platform": "Macintosh",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "WKWebView", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "WKWebView",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPod touch; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko)",
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "WKWebView", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "WKWebView",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Android 17; Mobile; rv:160.0) Gecko/160.0 Firefox/160.0",
 		"is_mobile": true,
 		"reported_platform": "Android",
-		"engine": { "name": "gecko", "major": 160 },
-		"browser": { "name": "Firefox", "version": [160, 0] }
+		"engine": {
+			"name": "gecko",
+			"major": 160
+		},
+		"browser": {
+			"name": "Firefox",
+			"version": [160, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Snapchat/14.32.0.53 (like Safari/8624.5.1.10.3, panda)",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [26, 6] },
-		"browser": { "name": "Snapchat", "version": [14, 32] }
+		"engine": {
+			"name": "webkit",
+			"version": [26, 6]
+		},
+		"browser": {
+			"name": "Snapchat",
+			"version": [14, 32, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1 Ddg/27.2",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [27, 2] },
-		"browser": { "name": "Ddg", "version": [27, 2] }
+		"engine": {
+			"name": "webkit",
+			"version": [27, 2]
+		},
+		"browser": {
+			"name": "Ddg",
+			"version": [27, 2, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Klarna/26.46.336",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "Klarna", "version": [26, 46] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "Klarna",
+			"version": [26, 46, 336]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0 OneOutlook/1.2026.1103.200",
 		"reported_platform": "Windows",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "OneOutlook", "version": [1, 2026] }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "OneOutlook",
+			"version": [1, 2026, 1103]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Claude/6.28899.6 Chrome/156.0.8078.100 Safari/537.36 MSIX",
 		"reported_platform": "Windows",
-		"engine": { "name": "blink", "major": 156 },
-		"browser": { "name": "Claude", "version": [6, 28899] }
+		"engine": {
+			"name": "blink",
+			"major": 156
+		},
+		"browser": {
+			"name": "Claude",
+			"version": [6, 28899, 6]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 16; POCO C75 Build/BP2A.250605.031.A3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.7049.79 Mobile Safari/537.36 XiaoMi/MiuiBrowser/14.67.2-gn",
 		"is_mobile": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 135 },
-		"browser": { "name": "XiaoMi/MiuiBrowser", "version": [14, 67] }
+		"engine": {
+			"name": "blink",
+			"major": 135
+		},
+		"browser": {
+			"name": "XiaoMi/MiuiBrowser",
+			"version": [14, 67, 2]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 27_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2.1 Mobile/15E148 Safari/604.1 (Ecosia ios@12.7.1.3487)",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [27, 2] },
-		"browser": { "name": "Ecosia", "version": [12, 7] }
+		"engine": {
+			"name": "webkit",
+			"version": [27, 2]
+		},
+		"browser": {
+			"name": "Ecosia",
+			"version": [12, 7, 1]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Mobile Safari/537.36 (Ecosia android@154.0.0.0)",
 		"is_mobile": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 154 },
-		"browser": { "name": "Ecosia", "version": [154, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 154
+		},
+		"browser": {
+			"name": "Ecosia",
+			"version": [154, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2.1 Mobile/15E148 Safari/604.1 Brave",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [27, 2] },
-		"browser": { "name": "Brave", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": [27, 2]
+		},
+		"browser": {
+			"name": "Brave",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Mobile/15E148 Safari/604.1 Startpage",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [26, 5] },
-		"browser": { "name": "Startpage", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": [26, 5]
+		},
+		"browser": {
+			"name": "Startpage",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) PayPalMobile Version/27.2 Mobile/15E148 Safari/604.1",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [27, 2] },
-		"browser": { "name": "PayPalMobile", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": [27, 2]
+		},
+		"browser": {
+			"name": "PayPalMobile",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 14; SM-S921B Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/157.0.8103.52 Mobile Safari/537.36 PayPalMobile",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "PayPalMobile", "version": null }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "PayPalMobile",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_7_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1 NAVER(inapp; search; 2000; 12.14.32)",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [16, 5] },
-		"browser": { "name": "NAVER", "version": null }
+		"engine": {
+			"name": "webkit",
+			"version": [16, 5]
+		},
+		"browser": {
+			"name": "NAVER",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0 [FBAN/EdgeFB; FHV=HP; FHM=Spectrex360]",
 		"reported_platform": "Macintosh",
-		"engine": { "name": "blink", "major": 136 },
-		"browser": { "name": "Facebook", "version": null }
+		"engine": {
+			"name": "blink",
+			"major": 136
+		},
+		"browser": {
+			"name": "Facebook",
+			"version": null
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 27_0_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0.1 Mobile/15E148 Safari/604.1 [WAiOS/2.26.45]",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": [27, 0] },
-		"browser": { "name": "WAiOS", "version": [2, 26] }
+		"engine": {
+			"name": "webkit",
+			"version": [27, 0]
+		},
+		"browser": {
+			"name": "WAiOS",
+			"version": [2, 26, 45]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_6_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 [LinkedInApp]/9.32.5794",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "LinkedInApp", "version": [9, 32] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "LinkedInApp",
+			"version": [9, 32, 5794]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 [SuperhumanProxy]/1.0 (email hello AT superhuman.com)",
 		"is_bot": true,
 		"reported_platform": "Macintosh",
-		"engine": { "name": "blink", "major": 140 },
-		"browser": { "name": "SuperhumanProxy", "version": [1, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 140
+		},
+		"browser": {
+			"name": "SuperhumanProxy",
+			"version": [1, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 27_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/24B156 Safari/604.1 [FBAN/FBIOS;FBAV/588.1.0.66.71;FBBV/1119078847;FBDV/iPhone19,2;FBMD/iPhone;FBSN/iOS;FBSV/27.2.1;FBSS/3;FBID/phone;FBLC/en_US;FBOP/5;FBRV/1121291220;IABMV/1];FBNV/1",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "Facebook", "version": [588, 1] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "Facebook",
+			"version": [588, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 17; SM-S928U1 Build/CP2A.260605.016; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/157.0.8103.50 Mobile Safari/537.36[FBAN/EMA;FBLC/en_US;FBAV/539.0.0.7.106;FBCX/modulariab;] NV/16",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 157 },
-		"browser": { "name": "Facebook", "version": [539, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 157
+		},
+		"browser": {
+			"name": "Facebook",
+			"version": [539, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 27_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/24B156 Safari/604.1 [FBAN/FBIOS;FBAV/587.0.0.31.71;FBBV/1110946418;FBDV/iPhone19,2;FBMD/iPhone;FBSN/iOS;FBSV/27.2.1;FBSS/3;FBID/phone;FBLC/en_US;FBOP/5;FBRV/1120367764;IABMV/1] meta-externalads/1.1",
 		"is_mobile": true,
 		"is_bot": true,
 		"reported_platform": "iPhone",
-		"engine": { "name": "webkit", "version": null },
-		"browser": { "name": "meta-externalads", "version": [1, 1] }
+		"engine": {
+			"name": "webkit",
+			"version": null
+		},
+		"browser": {
+			"name": "meta-externalads",
+			"version": [1, 1, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Linux; Android 10; ONEPLUS A7010; ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.6613.100 Mobile Safari/E7FBAF [FB_IAB/FB4A;FBAV/520.0.0.44.99;]",
 		"is_mobile": true,
 		"is_webview": true,
 		"reported_platform": "Android",
-		"engine": { "name": "blink", "major": 128 },
-		"browser": { "name": "Facebook", "version": [520, 0] }
+		"engine": {
+			"name": "blink",
+			"major": 128
+		},
+		"browser": {
+			"name": "Facebook",
+			"version": [520, 0, 0]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Ladybird/2026.47.7 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36",
 		"reported_platform": "Macintosh",
-		"engine": { "name": "ladybird", "version": [2026, 47, 7] },
-		"browser": { "name": "Ladybird", "version": [2026, 47] }
+		"engine": {
+			"name": "ladybird",
+			"version": [2026, 47, 7]
+		},
+		"browser": {
+			"name": "Ladybird",
+			"version": [2026, 47, 7]
+		}
 	},
 	{
 		"user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:153.0) Servo/0.8.0 Firefox/153.0",
 		"reported_platform": "Macintosh",
-		"engine": { "name": "servo", "version": [0, 8, 0] },
-		"browser": { "name": "Servo", "version": [0, 8] }
+		"engine": {
+			"name": "servo",
+			"version": [0, 8, 0]
+		},
+		"browser": {
+			"name": "Servo",
+			"version": [0, 8, 0]
+		}
 	}
 ]

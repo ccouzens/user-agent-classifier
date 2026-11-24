@@ -20,7 +20,7 @@ assert!(!parsed.is_webview);
 assert!(!parsed.is_bot);
 assert_eq!(parsed.reported_platform, ReportedPlatform::IPhone);
 assert_eq!(parsed.engine, Engine::WebKit { version: Some((27, 2)) });
-assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2)))));
+assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2, 0)))));
 ```
 
 # Cargo features

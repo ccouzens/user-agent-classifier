@@ -8,5 +8,5 @@ Browser name and version parsed from a `User-Agent` string.
 #[cfg_attr(feature = "serde", derive(Serialize))]
 pub struct Browser<'a> {
     pub name: &'a str,
-    pub version: Option<(u16, u16)>,
+    pub version: Option<(u16, u16, u16)>,
 }

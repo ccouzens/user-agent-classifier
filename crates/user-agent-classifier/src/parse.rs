@@ -24,7 +24,7 @@ assert!(!parsed.is_webview);
 assert!(!parsed.is_bot);
 assert_eq!(parsed.reported_platform, ReportedPlatform::IPhone);
 assert_eq!(parsed.engine, Engine::WebKit { version: Some((27, 2)) });
-assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2)))));
+assert_eq!(parsed.browser.map(|b| (b.name, b.version)), Some(("Safari", Some((27, 2, 0)))));
 ```
 */
 pub fn parse(ua: &str) -> Classification<'_> {
@@ -114,9 +114,9 @@ pub fn parse(ua: &str) -> Classification<'_> {
                 "Mobile" => is_mobile = true,
                 "Version" => version = parse_version(number),
                 "Safari" => has_safari = true,
-                "Chrome" => chrome = parse_version(number),
+                "Chrome" => chrome = parse_version_3(number),
                 "HeadlessChrome" => {
-                    let parsed = parse_version(number);
+                    let parsed = parse_version_3(number);
                     is_bot = true;
                     chrome = parsed;
                     specific_browser = Some(Browser {
@@ -124,19 +124,21 @@ pub fn parse(ua: &str) -> Classification<'_> {
                         version: parsed,
                     });
                 }
-                "Firefox" => firefox = parse_version(number),
+                "Firefox" => firefox = parse_version_3(number),
                 "Ladybird" => {
-                    ladybird = Some(parse_version_3(number));
+                    let parsed = parse_version_3(number);
+                    ladybird = Some(parsed);
                     specific_browser = Some(Browser {
                         name,
-                        version: parse_version(number),
+                        version: parsed,
                     });
                 }
                 "Servo" => {
-                    servo = Some(parse_version_3(number));
+                    let parsed = parse_version_3(number);
+                    servo = Some(parsed);
                     specific_browser = Some(Browser {
                         name,
-                        version: parse_version(number),
+                        version: parsed,
                     });
                 }
                 _ => {
@@ -150,7 +152,7 @@ pub fn parse(ua: &str) -> Classification<'_> {
                     }
                     specific_browser = Some(Browser {
                         name,
-                        version: parse_version(number),
+                        version: parse_version_3(number),
                     });
                 }
             },
@@ -163,7 +165,7 @@ pub fn parse(ua: &str) -> Classification<'_> {
                             "FBAN" | "FB_IAB" => is_facebook = true,
                             "FBAV" => {
                                 is_facebook = true;
-                                fb_version = parse_version(val);
+                                fb_version = parse_version_3(val);
                             }
                             _ => {}
                         }
@@ -178,7 +180,7 @@ pub fn parse(ua: &str) -> Classification<'_> {
                 } else if !content.contains(';')
                     && let Some((name, val)) = content.split_once('/')
                     && !name.is_empty()
-                    && let Some(ver) = parse_version(val)
+                    && let Some(ver) = parse_version_3(val)
                 {
                     if is_bot_name(name) {
                         is_bot = true;
@@ -200,7 +202,7 @@ pub fn parse(ua: &str) -> Classification<'_> {
                     Some(UaToken::NameSepNumber { name, number }) => {
                         bot_browser = Some(Browser {
                             name,
-                            version: parse_version(number),
+                            version: parse_version_3(number),
                         });
                     }
                     Some(UaToken::Other(name)) => {
@@ -257,10 +259,12 @@ pub fn parse(ua: &str) -> Classification<'_> {
         })
     })
     .or_else(|| {
-        (has_safari && version.is_some()).then_some(Browser {
-            name: "Safari",
-            version,
-        })
+        version
+            .filter(|_| has_safari)
+            .map(|(major, minor)| Browser {
+                name: "Safari",
+                version: Some((major, minor, 0)),
+            })
     })
     .or_else(|| {
         (has_apple_webkit
@@ -278,9 +282,9 @@ pub fn parse(ua: &str) -> Classification<'_> {
         Engine::Ladybird { version }
     } else if let Some(version) = servo {
         Engine::Servo { version }
-    } else if let Some((major, _)) = chrome {
+    } else if let Some((major, _, _)) = chrome {
         Engine::Blink { major }
-    } else if let Some((major, _)) = firefox {
+    } else if let Some((major, _, _)) = firefox {
         Engine::Gecko { major }
     } else if has_apple_webkit {
         Engine::WebKit { version }
@@ -312,7 +316,7 @@ fn parse_comment_browser(segment: &str) -> Option<Browser<'_>> {
     let token = segment.split_whitespace().next()?;
     let (name, version) = token
         .split_once('/')
-        .map_or((token, None), |(n, v)| (n, parse_version(v)));
+        .map_or((token, None), |(n, v)| (n, parse_version_3(v)));
     Some(Browser { name, version })
 }
 
@@ -322,7 +326,7 @@ fn parse_comment_at_browser(segment: &str) -> Option<Browser<'_>> {
     if name.is_empty() || tag.is_empty() || version_str.contains(char::is_whitespace) {
         return None;
     }
-    let version = parse_version(version_str)?;
+    let version = parse_version_3(version_str)?;
     Some(Browser {
         name,
         version: Some(version),

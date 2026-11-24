@@ -32,7 +32,7 @@ assert.deepEqual(parse(ua), {
 	is_bot: false,
 	reported_platform: "iPhone",
 	engine: { name: "webkit", version: [27, 2] },
-	browser: { name: "Safari", version: [27, 2] },
+	browser: { name: "Safari", version: [27, 2, 0] },
 });
 ```
 

@@ -20,8 +20,8 @@ export function parse(ua: string): Classification {
 	let isBot = false;
 	let sawWv = false;
 
-	let firefox: MinorVersion | undefined;
-	let chrome: MinorVersion | undefined;
+	let firefox: PatchVersion | undefined;
+	let chrome: PatchVersion | undefined;
 	let ladybird: PatchVersion | null | undefined;
 	let servo: PatchVersion | null | undefined;
 	let version: MinorVersion | undefined;
@@ -126,32 +126,36 @@ export function parse(ua: string): Classification {
 						hasSafari = true;
 						break;
 					case "Chrome":
-						chrome = parseVersion(number);
+						chrome = parseVersion3(number);
 						break;
 					case "HeadlessChrome": {
-						const parsed = parseVersion(number);
+						const parsed = parseVersion3(number);
 						isBot = true;
 						chrome = parsed;
 						specificBrowser = { name, version: parsed ?? null };
 						break;
 					}
 					case "Firefox":
-						firefox = parseVersion(number);
+						firefox = parseVersion3(number);
 						break;
-					case "Ladybird":
-						ladybird = parseVersion3(number) ?? null;
+					case "Ladybird": {
+						const parsed = parseVersion3(number) ?? null;
+						ladybird = parsed;
 						specificBrowser = {
 							name,
-							version: parseVersion(number) ?? null,
+							version: parsed,
 						};
 						break;
-					case "Servo":
-						servo = parseVersion3(number) ?? null;
+					}
+					case "Servo": {
+						const parsed = parseVersion3(number) ?? null;
+						servo = parsed;
 						specificBrowser = {
 							name,
-							version: parseVersion(number) ?? null,
+							version: parsed,
 						};
 						break;
+					}
 					default: {
 						if (name === "facebookexternalhit") {
 							sawFacebookexternalhit = true;
@@ -163,7 +167,7 @@ export function parse(ua: string): Classification {
 						}
 						specificBrowser = {
 							name,
-							version: parseVersion(number) ?? null,
+							version: parseVersion3(number) ?? null,
 						};
 						break;
 					}
@@ -173,7 +177,7 @@ export function parse(ua: string): Classification {
 			case "square_brackets": {
 				const { content } = token;
 				let isFacebook = false;
-				let fbVersion: MinorVersion | undefined;
+				let fbVersion: PatchVersion | undefined;
 				for (const entry of content.split(";")) {
 					const pair = splitOnce(entry, "/");
 					if (pair !== undefined) {
@@ -182,7 +186,7 @@ export function parse(ua: string): Classification {
 							isFacebook = true;
 						} else if (key === "FBAV") {
 							isFacebook = true;
-							fbVersion = parseVersion(val);
+							fbVersion = parseVersion3(val);
 						}
 					}
 				}
@@ -196,7 +200,7 @@ export function parse(ua: string): Classification {
 					const pair = splitOnce(content, "/");
 					if (pair !== undefined) {
 						const [name, val] = pair;
-						const ver = name.length > 0 ? parseVersion(val) : undefined;
+						const ver = name.length > 0 ? parseVersion3(val) : undefined;
 						if (ver !== undefined) {
 							if (isBotName(name)) {
 								isBot = true;
@@ -228,7 +232,7 @@ export function parse(ua: string): Classification {
 						if (next?.kind === "name_sep_number") {
 							botBrowser = {
 								name: next.name,
-								version: parseVersion(next.number) ?? null,
+								version: parseVersion3(next.number) ?? null,
 							};
 						} else if (next?.kind === "other") {
 							botBrowser = { name: next.value, version: null };
@@ -271,7 +275,7 @@ export function parse(ua: string): Classification {
 		browser = { name: "Chrome", version: chrome };
 	}
 	if (browser === null && hasSafari && version !== undefined) {
-		browser = { name: "Safari", version };
+		browser = { name: "Safari", version: [version[0], version[1], 0] };
 	}
 	if (
 		browser === null &&
@@ -331,7 +335,7 @@ function parseCommentBrowser(segment: string): Browser | undefined {
 	if (pair === undefined) {
 		return { name: token, version: null };
 	}
-	return { name: pair[0], version: parseVersion(pair[1]) ?? null };
+	return { name: pair[0], version: parseVersion3(pair[1]) ?? null };
 }
 
 function parseCommentAtBrowser(segment: string): Browser | undefined {
@@ -348,7 +352,7 @@ function parseCommentAtBrowser(segment: string): Browser | undefined {
 	if (name.length === 0 || tag.length === 0 || hasWhitespace(versionStr)) {
 		return undefined;
 	}
-	const version = parseVersion(versionStr);
+	const version = parseVersion3(versionStr);
 	if (version === undefined) {
 		return undefined;
 	}
