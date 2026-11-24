@@ -72,5 +72,5 @@ check-ts-src:
 check-ts-tests:
     cd typescript/user-agent-classifier && tsc -p tsconfig.test.json
 
-check-ts-benchmarks:
+check-ts-benchmarks: build-ts
     cd typescript/benchmarks && tsc --noEmit
