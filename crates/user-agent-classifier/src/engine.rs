@@ -54,3 +54,60 @@ impl Engine {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn engine_helpers() {
+        assert_eq!(Engine::Blink { major: 156 }.as_str(), "blink");
+        assert_eq!(Engine::Blink { major: 156 }.version(), Some((156, 0, 0)));
+        assert_eq!(Engine::Gecko { major: 160 }.as_str(), "gecko");
+        assert_eq!(Engine::Gecko { major: 160 }.version(), Some((160, 0, 0)));
+        assert_eq!(
+            Engine::WebKit {
+                version: Some((27, 2))
+            }
+            .as_str(),
+            "webkit"
+        );
+        assert_eq!(
+            Engine::WebKit {
+                version: Some((27, 2))
+            }
+            .version(),
+            Some((27, 2, 0))
+        );
+        assert_eq!(
+            Engine::Ladybird {
+                version: Some((2026, 47, 7))
+            }
+            .as_str(),
+            "ladybird"
+        );
+        assert_eq!(
+            Engine::Ladybird {
+                version: Some((2026, 47, 7))
+            }
+            .version(),
+            Some((2026, 47, 7))
+        );
+        assert_eq!(
+            Engine::Servo {
+                version: Some((0, 8, 0))
+            }
+            .as_str(),
+            "servo"
+        );
+        assert_eq!(
+            Engine::Servo {
+                version: Some((0, 8, 0))
+            }
+            .version(),
+            Some((0, 8, 0))
+        );
+        assert_eq!(Engine::Other.as_str(), "other");
+        assert_eq!(Engine::Other.version(), None);
+    }
+}

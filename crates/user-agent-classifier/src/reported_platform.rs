@@ -161,3 +161,20 @@ impl ReportedPlatform {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn platform_helpers() {
+        assert_eq!(ReportedPlatform::Android.as_str(), "Android");
+        assert_eq!(ReportedPlatform::CrOS.as_str(), "CrOS");
+        assert_eq!(ReportedPlatform::Linux.as_str(), "Linux");
+        assert_eq!(ReportedPlatform::IPhone.as_str(), "iPhone");
+        assert_eq!(ReportedPlatform::IPad.as_str(), "iPad");
+        assert_eq!(ReportedPlatform::Macintosh.as_str(), "Macintosh");
+        assert_eq!(ReportedPlatform::Windows.as_str(), "Windows");
+        assert_eq!(ReportedPlatform::Other.as_str(), "Other");
+    }
+}

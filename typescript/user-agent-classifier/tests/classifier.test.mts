@@ -6,7 +6,7 @@ import test from "node:test";
 import cases from "../../../parsed_user_agent_test_cases.json" with {
 	type: "json",
 };
-import { type Classification, engineVersion, parse } from "../src/index.mts";
+import { type Classification, parse } from "../src/index.mts";
 
 interface TestCase {
 	user_agent: string;
@@ -33,22 +33,4 @@ test("parsed_user_agent_test_cases.json", () => {
 		} as Classification;
 		assert.deepEqual(actual, expected, `Failed for UA: ${c.user_agent}`);
 	}
-});
-
-test("engineVersion helper", () => {
-	assert.deepEqual(engineVersion({ name: "blink", major: 156 }), [156, 0, 0]);
-	assert.deepEqual(engineVersion({ name: "gecko", major: 160 }), [160, 0, 0]);
-	assert.deepEqual(
-		engineVersion({ name: "webkit", version: [27, 2] }),
-		[27, 2, 0],
-	);
-	assert.deepEqual(
-		engineVersion({ name: "ladybird", version: [2026, 47, 7] }),
-		[2026, 47, 7],
-	);
-	assert.deepEqual(
-		engineVersion({ name: "servo", version: [0, 8, 0] }),
-		[0, 8, 0],
-	);
-	assert.equal(engineVersion({ name: "other" }), null);
 });

@@ -366,6 +366,7 @@ fn parse_leading_u16(s: &str) -> Option<u16> {
 
 #[cfg(test)]
 mod tests {
+    #[cfg(feature = "serde")]
     use super::*;
     #[cfg(feature = "serde")]
     use std::{string::String, vec::Vec};
@@ -390,64 +391,5 @@ mod tests {
             let actual = serde_json::to_value(parse(&case.user_agent)).unwrap();
             assert_json_diff::assert_json_eq!(actual, case.expected);
         }
-    }
-
-    #[test]
-    fn engine_and_platform_helpers() {
-        assert_eq!(Engine::Blink { major: 156 }.as_str(), "blink");
-        assert_eq!(Engine::Blink { major: 156 }.version(), Some((156, 0, 0)));
-        assert_eq!(Engine::Gecko { major: 160 }.as_str(), "gecko");
-        assert_eq!(
-            Engine::WebKit {
-                version: Some((27, 2))
-            }
-            .as_str(),
-            "webkit"
-        );
-        assert_eq!(
-            Engine::WebKit {
-                version: Some((27, 2))
-            }
-            .version(),
-            Some((27, 2, 0))
-        );
-        assert_eq!(
-            Engine::Ladybird {
-                version: Some((2026, 47, 7))
-            }
-            .as_str(),
-            "ladybird"
-        );
-        assert_eq!(
-            Engine::Ladybird {
-                version: Some((2026, 47, 7))
-            }
-            .version(),
-            Some((2026, 47, 7))
-        );
-        assert_eq!(
-            Engine::Servo {
-                version: Some((0, 8, 0))
-            }
-            .as_str(),
-            "servo"
-        );
-        assert_eq!(
-            Engine::Servo {
-                version: Some((0, 8, 0))
-            }
-            .version(),
-            Some((0, 8, 0))
-        );
-        assert_eq!(Engine::Other.as_str(), "other");
-        assert_eq!(Engine::Other.version(), None);
-        assert_eq!(ReportedPlatform::Android.as_str(), "Android");
-        assert_eq!(ReportedPlatform::CrOS.as_str(), "CrOS");
-        assert_eq!(ReportedPlatform::Linux.as_str(), "Linux");
-        assert_eq!(ReportedPlatform::IPhone.as_str(), "iPhone");
-        assert_eq!(ReportedPlatform::IPad.as_str(), "iPad");
-        assert_eq!(ReportedPlatform::Macintosh.as_str(), "Macintosh");
-        assert_eq!(ReportedPlatform::Windows.as_str(), "Windows");
-        assert_eq!(ReportedPlatform::Other.as_str(), "Other");
     }
 }
