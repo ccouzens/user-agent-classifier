@@ -1,0 +1,9 @@
+{
+	"extends": "../user-agent-classifier/tsconfig.json",
+	"compilerOptions": {
+		"noEmit": true,
+		"resolveJsonModule": true,
+		"rootDir": "."
+	},
+	"include": ["compare.mts"]
+}

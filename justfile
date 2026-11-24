@@ -51,6 +51,9 @@ bench:
     test -f crates/benchmarks/data/regexes.yaml || curl -fsSL https://raw.githubusercontent.com/ua-parser/uap-core/master/regexes.yaml -o crates/benchmarks/data/regexes.yaml
     cargo bench -p benchmarks
 
+bench-ts: build-ts
+    node typescript/benchmarks/compare.mts
+
 check-biome:
     biome check
 
@@ -61,10 +64,13 @@ check-clippy:
     cargo clippy --workspace --all-targets -- -D warnings
 
 [parallel]
-check-ts: check-ts-src check-ts-tests
+check-ts: check-ts-src check-ts-tests check-ts-benchmarks
 
 check-ts-src:
     cd typescript/user-agent-classifier && tsc --noEmit
 
 check-ts-tests:
     cd typescript/user-agent-classifier && tsc -p tsconfig.test.json
+
+check-ts-benchmarks:
+    cd typescript/benchmarks && tsc --noEmit

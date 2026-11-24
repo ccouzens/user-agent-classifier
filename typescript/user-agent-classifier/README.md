@@ -45,6 +45,19 @@ assert.deepEqual(parse(ua), {
   [parsed_user_agent_test_cases.json](https://github.com/ccouzens/user-agent-classifier/blob/main/parsed_user_agent_test_cases.json)
   fixture as the Rust crate.
 
+## Benchmarks
+
+`typescript/benchmarks` compares `user-agent-classifier` against `bowser`,
+`ua-parser-js`, and `device-detector-js` over the 73 `User-Agent` strings in
+`parsed_user_agent_test_cases.json` using `mitata` (`just bench-ts`):
+
+| Library                 | Mean Latency | p75 Latency |
+| ----------------------- | ------------ | ----------- |
+| `user-agent-classifier` | 146.26 µs    | 143.07 µs   |
+| `bowser`                | 862.85 µs    | 864.73 µs   |
+| `ua-parser-js`          | 4.02 ms      | 4.11 ms     |
+| `device-detector-js`    | 75.72 ms     | 75.87 ms    |
+
 ## Links
 
 [GitHub](https://github.com/ccouzens/user-agent-classifier)
