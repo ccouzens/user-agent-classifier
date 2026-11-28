@@ -5,5 +5,5 @@
 		"resolveJsonModule": true,
 		"rootDir": "."
 	},
-	"include": ["compare.mts"]
+	"include": ["compare.mts", "modules.d.ts"]
 }

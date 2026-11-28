@@ -47,16 +47,18 @@ assert.deepEqual(parse(ua), {
 
 ## Benchmarks
 
-`typescript/benchmarks` compares `user-agent-classifier` against `bowser`,
-`ua-parser-js`, and `device-detector-js` over the 73 `User-Agent` strings in
-`parsed_user_agent_test_cases.json` using `mitata` (`just bench-ts`):
+`typescript/benchmarks` compares `user-agent-classifier` against
+`ua-parser-js (v1)`, `ua-parser-js (v2)`, `bowser`, and `device-detector-js`
+over the 75 `User-Agent` strings in `parsed_user_agent_test_cases.json` using
+`mitata` (`just bench-ts`):
 
 | Library                 | Mean Latency | p75 Latency |
 | ----------------------- | ------------ | ----------- |
-| `user-agent-classifier` | 146.26 µs    | 143.07 µs   |
-| `bowser`                | 862.85 µs    | 864.73 µs   |
-| `ua-parser-js`          | 4.02 ms      | 4.11 ms     |
-| `device-detector-js`    | 75.72 ms     | 75.87 ms    |
+| `user-agent-classifier` | 129.14 µs    | 124.12 µs   |
+| `ua-parser-js (v1)`     | 1.79 ms      | 1.81 ms     |
+| `ua-parser-js (v2)`     | 3.74 ms      | 3.83 ms     |
+| `bowser`                | 912.45 µs    | 931.95 µs   |
+| `device-detector-js`    | 89.60 ms     | 91.10 ms    |
 
 ## Links
 
