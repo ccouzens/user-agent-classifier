@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, viewport-fit=cover">
+		<meta name="text-scale" content="scale">
+		<title>TypeScript Classifier — user-agent-classifier</title>
+		<link rel="stylesheet" href="/src/styles/main.css">
+		<link
+			rel="modulepreload"
+			href="https://cdn.jsdelivr.net/npm/ua-parser-js@2.0.10/src/main/ua-parser.mjs"
+			integrity="sha384-wj5mQbirwVkyFji7uEd1WliOzDBWCVopMdA1LBxwZztTwwxZKZWMt+PoAWvEJaqS"
+			crossorigin="anonymous"
+		>
+		<link
+			rel="modulepreload"
+			href="https://cdn.jsdelivr.net/npm/device-detector-js@3.0.3/+esm"
+			integrity="sha384-MtLu2CPlTS1humnBWlM84COrwN54urJTFnVa96BSpphyMfRoLFM1lS/KSNYVEMlG"
+			crossorigin="anonymous"
+		>
+		<script type="module" src="/src/classifier.mts"></script>
+	</head>
+	<body>
+		<header>
+			<a href="../../">user-agent-classifier</a>
+			<nav aria-label="Primary">
+				<a href="./" aria-current="page">TypeScript Classifier</a>
+				<a href="../benchmarks/">TypeScript Benchmarks</a>
+			</nav>
+		</header>
+
+		<main>
+			<h1>TypeScript Classifier</h1>
+			<p>
+				Enter any <code>User-Agent</code> string or choose a preset below to
+				compare the output of <code>user-agent-classifier</code> against
+				<code>ua-parser-js</code>
+				(v1 &amp; v2),
+				<code>bowser</code>, and <code>device-detector-js</code>.
+			</p>
+
+			<section class="panel">
+				<label for="ua-input">User-Agent String</label>
+				<textarea id="ua-input" rows="3" spellcheck="false"></textarea>
+
+				<div class="preset-row">
+					<select id="ua-preset" aria-label="Select a User-Agent">
+						<option id="my-ua-option" selected>My User-Agent</option>
+						<option value="">Custom User-Agent…</option>
+						<optgroup label="Desktop Browsers">
+							<option
+								value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+							>
+								Chrome (Linux)
+							</option>
+							<option
+								value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:148.0) Gecko/20100101 Firefox/148.0"
+							>
+								Firefox (Windows)
+							</option>
+							<option
+								value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15"
+							>
+								Safari (macOS)
+							</option>
+							<option
+								value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0"
+							>
+								Edge (Windows)
+							</option>
+						</optgroup>
+						<optgroup label="Mobile Browsers">
+							<option
+								value="Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36"
+							>
+								Chrome (Android Mobile)
+							</option>
+							<option
+								value="Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1"
+							>
+								Safari (iPhone)
+							</option>
+							<option
+								value="Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/140.0.0.0 Mobile/15E148 Safari/604.1"
+							>
+								Chrome on iOS (CriOS)
+							</option>
+							<option
+								value="Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/28.0 Chrome/130.0.0.0 Mobile Safari/537.36"
+							>
+								Samsung Internet
+							</option>
+						</optgroup>
+						<optgroup label="WebViews &amp; In-App Browsers">
+							<option
+								value="Mozilla/5.0 (Linux; Android 10; K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/157.0.0.0 Mobile Safari/537.36"
+							>
+								Android WebView (wv)
+							</option>
+							<option
+								value="Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/22H20 Instagram 400.0.0.0 (iPhone17,1; iOS 18_7; en_US; en; scale=3.00; 1206x2622; 123456789)"
+							>
+								Instagram In-App (iPhone)
+							</option>
+							<option
+								value="Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/22H20 [FBAN/FBIOS;FBAV/500.0.0.0.0;FBBV/123456789;FBDV/iPhone17,1;FBMD/iPhone;FBSN/iOS;FBSV/18.7;FBSS/3;FBID/phone;FBLC/en_US;FBOP/5]"
+							>
+								Facebook In-App (iPhone)
+							</option>
+						</optgroup>
+						<optgroup label="Bots &amp; Crawlers">
+							<option
+								value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36"
+							>
+								HeadlessChrome
+							</option>
+							<option
+								value="Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+							>
+								Googlebot
+							</option>
+							<option
+								value="Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36"
+							>
+								bingbot
+							</option>
+							<option value="curl/8.7.1">curl</option>
+						</optgroup>
+					</select>
+				</div>
+			</section>
+
+			<div id="comparison-results" class="comparison-grid"></div>
+		</main>
+
+		<footer>
+			<a
+				href="https://www.npmjs.com/package/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>npm</a
+			>
+			<a
+				href="https://crates.io/crates/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>crates.io</a
+			>
+			<a
+				href="https://github.com/ccouzens/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>GitHub</a
+			>
+		</footer>
+	</body>
+</html>

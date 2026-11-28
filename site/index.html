@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, viewport-fit=cover">
+		<meta name="text-scale" content="scale">
+		<title>user-agent-classifier</title>
+		<link rel="stylesheet" href="/src/styles/main.css">
+	</head>
+	<body>
+		<header>
+			<a href="./" aria-current="page">user-agent-classifier</a>
+			<nav aria-label="Primary">
+				<a href="./typescript/classifier/">TypeScript Classifier</a>
+				<a href="./typescript/benchmarks/">TypeScript Benchmarks</a>
+			</nav>
+		</header>
+
+		<main>
+			<h1>user-agent-classifier</h1>
+			<p>
+				Regex-free, single-pass <code>User-Agent</code> classifier for
+				observability — extracts rendering engine, platform, mobile, WebView,
+				bot, and browser.
+			</p>
+
+			<div class="card-grid">
+				<section class="card">
+					<h2>TypeScript Classifier</h2>
+					<p>
+						Test any <code>User-Agent</code> string (including your own
+						browser's) or pick from common presets to compare the parsed output
+						across libraries.
+					</p>
+					<a href="./typescript/classifier/">Open TypeScript Classifier →</a>
+				</section>
+
+				<section class="card">
+					<h2>TypeScript Benchmarks</h2>
+					<p>
+						Run in-browser throughput benchmarks comparing
+						<code>user-agent-classifier</code>
+						against
+						<code>ua-parser-js</code>
+						(v1 &amp; v2), <code>bowser</code>, and
+						<code>device-detector-js</code>.
+					</p>
+					<a href="./typescript/benchmarks/">Open TypeScript Benchmarks →</a>
+				</section>
+			</div>
+
+			<section class="panel">
+				<h2>Packages &amp; Source</h2>
+				<p>
+					Available in both <strong>TypeScript</strong> (zero-dependency,
+					ESM-only) and <strong>Rust</strong> (<code>no_std</code>,
+					zero-allocation). Rust/WASM demos and benchmarks are planned for
+					<code>/rust/</code>.
+				</p>
+				<div class="footer-links">
+					<a
+						href="https://www.npmjs.com/package/user-agent-classifier"
+						target="_blank"
+						rel="noopener noreferrer"
+						>npm (TypeScript)</a
+					>
+					<a
+						href="https://crates.io/crates/user-agent-classifier"
+						target="_blank"
+						rel="noopener noreferrer"
+						>crates.io (Rust)</a
+					>
+					<a
+						href="https://github.com/ccouzens/user-agent-classifier"
+						target="_blank"
+						rel="noopener noreferrer"
+						>GitHub Repository</a
+					>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<a
+				href="https://www.npmjs.com/package/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>npm</a
+			>
+			<a
+				href="https://crates.io/crates/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>crates.io</a
+			>
+			<a
+				href="https://github.com/ccouzens/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>GitHub</a
+			>
+		</footer>
+	</body>
+</html>

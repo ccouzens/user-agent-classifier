@@ -1,4 +1,5 @@
 /target
 /crates/benchmarks/data/
 /typescript/user-agent-classifier/dist
+/site/dist
 node_modules/

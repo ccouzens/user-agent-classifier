@@ -1,0 +1,11 @@
+[language-server.tsc]
+command = "tsc"
+args = ["--lsp", "--stdio"]
+
+[[language]]
+name = "typescript"
+language-servers = ["tsc"]
+
+[[language]]
+name = "javascript"
+language-servers = ["tsc"]

@@ -1,0 +1,14 @@
+{
+	"name": "site",
+	"private": true,
+	"type": "module",
+	"dependencies": {
+		"bowser": "^2.15.1",
+		"ua-parser-js": "^1.0.41",
+		"user-agent-classifier": "workspace:*"
+	},
+	"devDependencies": {
+		"@types/ua-parser-js": "^0.7.39",
+		"vite": "^8.3.8"
+	}
+}

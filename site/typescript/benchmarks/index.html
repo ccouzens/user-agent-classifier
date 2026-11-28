@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, viewport-fit=cover">
+		<meta name="text-scale" content="scale">
+		<title>TypeScript Benchmarks — user-agent-classifier</title>
+		<link rel="stylesheet" href="/src/styles/main.css">
+		<link
+			rel="modulepreload"
+			href="https://cdn.jsdelivr.net/npm/ua-parser-js@2.0.10/src/main/ua-parser.mjs"
+			integrity="sha384-wj5mQbirwVkyFji7uEd1WliOzDBWCVopMdA1LBxwZztTwwxZKZWMt+PoAWvEJaqS"
+			crossorigin="anonymous"
+		>
+		<link
+			rel="modulepreload"
+			href="https://cdn.jsdelivr.net/npm/device-detector-js@3.0.3/+esm"
+			integrity="sha384-MtLu2CPlTS1humnBWlM84COrwN54urJTFnVa96BSpphyMfRoLFM1lS/KSNYVEMlG"
+			crossorigin="anonymous"
+		>
+		<script type="module" src="/src/benchmarks.mts"></script>
+	</head>
+	<body>
+		<header>
+			<a href="../../">user-agent-classifier</a>
+			<nav aria-label="Primary">
+				<a href="../classifier/">TypeScript Classifier</a>
+				<a href="./" aria-current="page">TypeScript Benchmarks</a>
+			</nav>
+		</header>
+
+		<main>
+			<h1>TypeScript Benchmarks</h1>
+			<p>
+				Compare <code>user-agent-classifier</code> against
+				<code>ua-parser-js</code>
+				(v1 &amp; v2),
+				<code>bowser</code>, and <code>device-detector-js</code>
+				directly in your browser using a Web Worker.
+			</p>
+
+			<section class="panel">
+				<label for="corpus-input">
+					User-Agent Corpus (one per line, <span id="corpus-count">75</span>
+					strings)
+				</label>
+				<textarea id="corpus-input" rows="8" spellcheck="false"></textarea>
+
+				<div class="preset-row">
+					<select id="corpus-preset" aria-label="Select a User-Agent corpus">
+						<option value="default" selected>Default Corpus (75 UAs)</option>
+						<option value="my-ua">My User-Agent</option>
+						<option value="">Custom Corpus…</option>
+					</select>
+					<button type="button" id="btn-run" class="primary">
+						Run Benchmarks
+					</button>
+				</div>
+			</section>
+
+			<section class="panel">
+				<h2>Results</h2>
+				<div class="benchmarks-table-wrap">
+					<table>
+						<thead>
+							<tr>
+								<th>Library</th>
+								<th>Status</th>
+								<th>UAs / s</th>
+								<th>Mean / Batch</th>
+								<th>Relative</th>
+								<th>Throughput</th>
+							</tr>
+						</thead>
+						<tbody id="results-body">
+							<tr>
+								<td>user-agent-classifier</td>
+								<td>Pending</td>
+								<td>—</td>
+								<td>—</td>
+								<td>—</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>ua-parser-js (v1)</td>
+								<td>Pending</td>
+								<td>—</td>
+								<td>—</td>
+								<td>—</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>ua-parser-js (v2)</td>
+								<td>Pending</td>
+								<td>—</td>
+								<td>—</td>
+								<td>—</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>bowser</td>
+								<td>Pending</td>
+								<td>—</td>
+								<td>—</td>
+								<td>—</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>device-detector-js</td>
+								<td>Pending</td>
+								<td>—</td>
+								<td>—</td>
+								<td>—</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="muted-note">
+					Benchmarks run in a dedicated Web Worker inside your browser's
+					JavaScript engine. For Node.js server benchmarks using
+					<code>mitata</code>, see
+					<a
+						href="https://github.com/ccouzens/user-agent-classifier/blob/main/typescript/user-agent-classifier/README.md#benchmarks"
+						target="_blank"
+						rel="noopener noreferrer"
+						>the README results</a
+					>
+					or <code>typescript/benchmarks/compare.mts</code>.
+				</p>
+			</section>
+		</main>
+
+		<footer>
+			<a
+				href="https://www.npmjs.com/package/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>npm</a
+			>
+			<a
+				href="https://crates.io/crates/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>crates.io</a
+			>
+			<a
+				href="https://github.com/ccouzens/user-agent-classifier"
+				target="_blank"
+				rel="noopener noreferrer"
+				>GitHub</a
+			>
+		</footer>
+	</body>
+</html>

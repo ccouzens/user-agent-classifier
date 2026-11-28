@@ -1,2 +1,6 @@
 packages:
   - "typescript/*"
+  - "site"
+
+allowBuilds:
+  esbuild: true

@@ -40,8 +40,33 @@ test-no-default-features:
 test-ts:
     node --test typescript/user-agent-classifier/tests/*.test.mts
 
+[working-directory('typescript/user-agent-classifier')]
 build-ts:
-    cd typescript/user-agent-classifier && tsc
+    tsc
+
+[working-directory('site')]
+dev-site: build-ts
+    pnpm exec vite
+
+[working-directory('site')]
+build-site: build-ts
+    pnpm exec vite build
+
+[working-directory('site')]
+preview-site: build-site
+    pnpm exec vite preview
+
+[parallel]
+tunnel-dev: dev-site _cloudflared-dev
+
+[parallel]
+tunnel-preview: preview-site _cloudflared-preview
+
+_cloudflared-dev:
+    cloudflared tunnel --url http://localhost:5173
+
+_cloudflared-preview:
+    cloudflared tunnel --url http://localhost:4173
 
 [parallel]
 check: format-check test check-biome check-toml check-clippy check-ts
@@ -64,13 +89,24 @@ check-clippy:
     cargo clippy --workspace --all-targets -- -D warnings
 
 [parallel]
-check-ts: check-ts-src check-ts-tests check-ts-benchmarks
+check-ts: check-ts-src check-ts-tests check-ts-benchmarks check-ts-site check-ts-site-worker
 
+[working-directory('typescript/user-agent-classifier')]
 check-ts-src:
-    cd typescript/user-agent-classifier && tsc --noEmit
+    tsc --noEmit
 
+[working-directory('typescript/user-agent-classifier')]
 check-ts-tests:
-    cd typescript/user-agent-classifier && tsc -p tsconfig.test.json
+    tsc -p tsconfig.test.json
 
+[working-directory('typescript/benchmarks')]
 check-ts-benchmarks: build-ts
-    cd typescript/benchmarks && tsc --noEmit
+    tsc --noEmit
+
+[working-directory('site')]
+check-ts-site: build-ts
+    tsc --noEmit
+
+[working-directory('site')]
+check-ts-site-worker: build-ts
+    tsc -p tsconfig.worker.json --noEmit
